@@ -29,7 +29,8 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
     @Override
     public void onBindViewHolder(@NonNull HolderFundo holder, int position) {
         Fundo fundo = listFundos.get(position);
-        holder.textId.setText(String.valueOf(fundo.getId()));
+        holder.textFullName.setText(String.valueOf(fundo.getFullName()));
+        holder.textFundType.setText(fundo.getSpecification().getFundType());
     }
 
     @Override
@@ -39,11 +40,13 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
     }
 
     public static class HolderFundo extends RecyclerView.ViewHolder {
-        public MaterialTextView textId;
+        public MaterialTextView textFullName;
+        public MaterialTextView textFundType;
 
         public HolderFundo(@NonNull View itemView) {
             super(itemView);
-            textId = itemView.findViewById(R.id.card_fundo_text_id);
+            textFullName = itemView.findViewById(R.id.card_fundo_text_full_name);
+            textFundType = itemView.findViewById(R.id.card_fundo_text_fund_type);
         }
     }
 }

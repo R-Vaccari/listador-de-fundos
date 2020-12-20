@@ -28,8 +28,8 @@ public class FundoProvider {
     }
 
     static class NetworkRunnable implements Runnable {
-        private Handler mainHandler = new Handler(Looper.getMainLooper());
-        private WeakReference<FundoViewModel> weakReference;
+        private final Handler mainHandler = new Handler(Looper.getMainLooper());
+        private final WeakReference<FundoViewModel> weakReference;
 
         public NetworkRunnable(FundoViewModel viewModel) {
             weakReference = new WeakReference<>(viewModel);

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Listador de Fundos</string>
+    <string name="carregando_fundos">Carregando fundos. Por favor aguarde.</string>
 </resources>
