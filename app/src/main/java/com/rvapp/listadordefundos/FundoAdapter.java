@@ -15,7 +15,7 @@ import java.util.List;
 public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo> {
     private List<Fundo> listFundos;
 
-    public FundoAdapter(List<Fundo> listFundos) {
+    public void setListFundos(List<Fundo> listFundos) {
         this.listFundos = listFundos;
     }
 
@@ -34,7 +34,8 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
 
     @Override
     public int getItemCount() {
-        return listFundos.size();
+        if (listFundos != null) return listFundos.size();
+        else return 0;
     }
 
     public static class HolderFundo extends RecyclerView.ViewHolder {
