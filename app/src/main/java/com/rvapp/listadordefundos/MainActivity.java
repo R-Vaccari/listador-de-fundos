@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void configureRecycler(RecyclerView recyclerView) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        adapter = new FundoAdapter();
+        adapter = new FundoAdapter(this);
         adapter.setHasStableIds(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
