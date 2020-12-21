@@ -1,4 +1,4 @@
-package com.rvapp.listadordefundos.entidades;
+package com.rvapp.listadordefundos.entidades.fundo.subparts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
