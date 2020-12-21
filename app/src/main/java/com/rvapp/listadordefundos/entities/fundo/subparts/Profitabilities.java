@@ -1,8 +1,11 @@
-package com.rvapp.listadordefundos.entidades.fundo.subparts;
+package com.rvapp.listadordefundos.entities.fundo.subparts;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Profitabilities {
+public class Profitabilities implements Parcelable {
     private String m60;
     private String m48;
     private String m24;
@@ -11,6 +14,49 @@ public class Profitabilities {
     private String m12;
     private String year;
     private String day;
+
+    public Profitabilities() {
+    }
+
+    protected Profitabilities(Parcel in) {
+        m60 = in.readString();
+        m48 = in.readString();
+        m24 = in.readString();
+        m36 = in.readString();
+        month = in.readString();
+        m12 = in.readString();
+        year = in.readString();
+        day = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(m60);
+        dest.writeString(m48);
+        dest.writeString(m24);
+        dest.writeString(m36);
+        dest.writeString(month);
+        dest.writeString(m12);
+        dest.writeString(year);
+        dest.writeString(day);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Profitabilities> CREATOR = new Creator<Profitabilities>() {
+        @Override
+        public Profitabilities createFromParcel(Parcel in) {
+            return new Profitabilities(in);
+        }
+
+        @Override
+        public Profitabilities[] newArray(int size) {
+            return new Profitabilities[size];
+        }
+    };
 
     public String getM60() {
         return m60;

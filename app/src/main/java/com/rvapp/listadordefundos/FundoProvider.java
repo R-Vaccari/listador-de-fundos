@@ -6,7 +6,7 @@ import android.os.Looper;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rvapp.listadordefundos.entidades.Fundo;
+import com.rvapp.listadordefundos.entities.Fundo;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;

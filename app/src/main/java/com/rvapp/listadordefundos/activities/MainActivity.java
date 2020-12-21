@@ -1,7 +1,9 @@
-package com.rvapp.listadordefundos;
+package com.rvapp.listadordefundos.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.ContentLoadingProgressBar;
@@ -9,6 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.rvapp.listadordefundos.FundoAdapter;
+import com.rvapp.listadordefundos.FundoViewModel;
+import com.rvapp.listadordefundos.R;
 
 public class MainActivity extends AppCompatActivity {
     private FundoViewModel viewModel;
@@ -29,14 +34,21 @@ public class MainActivity extends AppCompatActivity {
             progressText.setVisibility(View.GONE);
             adapter.setListFundos(fundos);
             adapter.notifyDataSetChanged();
+            Toast.makeText(this, String.valueOf(fundos.size()), Toast.LENGTH_SHORT).show();
         });
     }
 
     private void configureRecycler(RecyclerView recyclerView) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
         adapter = new FundoAdapter(this);
         adapter.setHasStableIds(true);
-        recyclerView.setLayoutManager(layoutManager);
+        adapter.setClickListener(p -> {
+            Intent intent = new Intent(this, FundoActivity.class);
+            intent.putExtra("fundo", adapter.getFromPosition(p));
+        });
+
         recyclerView.setAdapter(adapter);
     }
 }

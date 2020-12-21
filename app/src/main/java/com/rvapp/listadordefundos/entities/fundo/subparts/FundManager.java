@@ -1,14 +1,41 @@
-package com.rvapp.listadordefundos.entidades.fundo.subparts;
+package com.rvapp.listadordefundos.entities.fundo.subparts;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class FundManager {
+public class FundManager implements Parcelable {
     private String description;
     private int id;
     private String fullName;
     private String logo;
     private String slug;
     private String name;
+
+    public FundManager() {
+    }
+
+    protected FundManager(Parcel in) {
+        description = in.readString();
+        id = in.readInt();
+        fullName = in.readString();
+        logo = in.readString();
+        slug = in.readString();
+        name = in.readString();
+    }
+
+    public static final Creator<FundManager> CREATOR = new Creator<FundManager>() {
+        @Override
+        public FundManager createFromParcel(Parcel in) {
+            return new FundManager(in);
+        }
+
+        @Override
+        public FundManager[] newArray(int size) {
+            return new FundManager[size];
+        }
+    };
 
     public String getDescription() {
         return description;
@@ -62,5 +89,20 @@ public class FundManager {
     @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(description);
+        dest.writeInt(id);
+        dest.writeString(fullName);
+        dest.writeString(logo);
+        dest.writeString(slug);
+        dest.writeString(name);
     }
 }

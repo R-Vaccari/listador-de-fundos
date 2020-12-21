@@ -1,8 +1,11 @@
-package com.rvapp.listadordefundos.entidades.fundo.subparts;
+package com.rvapp.listadordefundos.entities.fundo.subparts;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class PerformanceVideo {
+public class PerformanceVideo implements Parcelable {
     private String description;
     private String title;
     private String url;
@@ -11,6 +14,32 @@ public class PerformanceVideo {
     private boolean enabledForTvOrama;
     private String youtubeId;
     private String thumbnail;
+
+    public PerformanceVideo() {
+    }
+
+    protected PerformanceVideo(Parcel in) {
+        description = in.readString();
+        title = in.readString();
+        url = in.readString();
+        published = in.readString();
+        id = in.readInt();
+        enabledForTvOrama = in.readByte() != 0;
+        youtubeId = in.readString();
+        thumbnail = in.readString();
+    }
+
+    public static final Creator<PerformanceVideo> CREATOR = new Creator<PerformanceVideo>() {
+        @Override
+        public PerformanceVideo createFromParcel(Parcel in) {
+            return new PerformanceVideo(in);
+        }
+
+        @Override
+        public PerformanceVideo[] newArray(int size) {
+            return new PerformanceVideo[size];
+        }
+    };
 
     public String getDescription() {
         return description;
@@ -82,5 +111,22 @@ public class PerformanceVideo {
     @JsonProperty("thumbnail")
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(description);
+        dest.writeString(title);
+        dest.writeString(url);
+        dest.writeString(published);
+        dest.writeInt(id);
+        dest.writeByte((byte) (enabledForTvOrama ? 1 : 0));
+        dest.writeString(youtubeId);
+        dest.writeString(thumbnail);
     }
 }

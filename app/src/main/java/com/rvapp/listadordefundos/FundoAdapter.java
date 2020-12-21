@@ -10,27 +10,36 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
-import com.rvapp.listadordefundos.entidades.Fundo;
+import com.rvapp.listadordefundos.entities.Fundo;
 
 import java.util.List;
 
 public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo> {
     private List<Fundo> listFundos;
     private Context context;
+    private OnItemClickListener clickListener;
+
+    public FundoAdapter(Context context) {
+        this.context = context;
+    }
 
     public void setListFundos(List<Fundo> listFundos) {
         this.listFundos = listFundos;
     }
 
-    public FundoAdapter(Context context) {
-        this.context = context;
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setClickListener(OnItemClickListener clickListener) {
+        this.clickListener = clickListener;
     }
 
     @NonNull
     @Override
     public HolderFundo onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_fundo, parent, false);
-        return new HolderFundo(v);
+        return new HolderFundo(v, clickListener);
     }
 
     @Override
@@ -47,6 +56,10 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
     public int getItemCount() {
         if (listFundos != null) return listFundos.size();
         else return 0;
+    }
+
+    public Fundo getFromPosition(int position) {
+        return listFundos.get(position);
     }
 
     public void colorLateralBar(Fundo fundo, ImageView lateralBar) {
@@ -70,13 +83,18 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
         public MaterialTextView textProfitability12m;
         public MaterialTextView textMinimumApplication;
 
-        public HolderFundo(@NonNull View itemView) {
+        public HolderFundo(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             lateralBar = itemView.findViewById(R.id.card_fundo_lateral_bar);
             textSimpleName = itemView.findViewById(R.id.card_fundo_text_simple_name);
             textFundType = itemView.findViewById(R.id.card_fundo_text_fund_type);
             textProfitability12m = itemView.findViewById(R.id.card_fundo_text_fund_profitability_12m);
             textMinimumApplication = itemView.findViewById(R.id.card_fundo_text_fund_minimum_application);
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    if (getAdapterPosition() != RecyclerView.NO_POSITION) listener.onItemClick(getAdapterPosition());
+                }
+            });
         }
     }
 }

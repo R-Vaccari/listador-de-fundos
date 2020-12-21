@@ -1,20 +1,23 @@
-package com.rvapp.listadordefundos.entidades;
+package com.rvapp.listadordefundos.entities;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.Benchmark;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.Description;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.Document;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.Fees;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.FundManager;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.FundSituation;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.Operability;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.PerformanceAudio;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.PerformanceVideo;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.Profitabilities;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.Specification;
-import com.rvapp.listadordefundos.entidades.fundo.subparts.StrategyVideo;
+import com.rvapp.listadordefundos.entities.fundo.subparts.Benchmark;
+import com.rvapp.listadordefundos.entities.fundo.subparts.Description;
+import com.rvapp.listadordefundos.entities.fundo.subparts.Document;
+import com.rvapp.listadordefundos.entities.fundo.subparts.Fees;
+import com.rvapp.listadordefundos.entities.fundo.subparts.FundManager;
+import com.rvapp.listadordefundos.entities.fundo.subparts.FundSituation;
+import com.rvapp.listadordefundos.entities.fundo.subparts.Operability;
+import com.rvapp.listadordefundos.entities.fundo.subparts.PerformanceAudio;
+import com.rvapp.listadordefundos.entities.fundo.subparts.PerformanceVideo;
+import com.rvapp.listadordefundos.entities.fundo.subparts.Profitabilities;
+import com.rvapp.listadordefundos.entities.fundo.subparts.Specification;
+import com.rvapp.listadordefundos.entities.fundo.subparts.StrategyVideo;
 
-public class Fundo {
+public class Fundo implements Parcelable {
     private int id;
     private String fullName;
     private Specification specification;
@@ -52,6 +55,43 @@ public class Fundo {
 
     public Fundo() {
     }
+
+    protected Fundo(Parcel in) {
+        id = in.readInt();
+        fullName = in.readString();
+        initialDate = in.readString();
+        isActive = in.readByte() != 0;
+        isSimple = in.readByte() != 0;
+        descriptionSEO = in.readString();
+        openingDate = in.readString();
+        isClosed = in.readByte() != 0;
+        simpleName = in.readString();
+        targetFund = in.readString();
+        quotaDate = in.readString();
+        taxClassification = in.readString();
+        cnpj = in.readString();
+        oramaStandard = in.readByte() != 0;
+        slug = in.readString();
+        volatility12m = in.readString();
+        insuranceCompanyCode = in.readString();
+        closedToCaptureExplanation = in.readString();
+        closingDate = in.readString();
+        netPatrimony12m = in.readString();
+        isClosedToCapture = in.readByte() != 0;
+        esgSeal = in.readByte() != 0;
+    }
+
+    public static final Creator<Fundo> CREATOR = new Creator<Fundo>() {
+        @Override
+        public Fundo createFromParcel(Parcel in) {
+            return new Fundo(in);
+        }
+
+        @Override
+        public Fundo[] newArray(int size) {
+            return new Fundo[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -357,5 +397,36 @@ public class Fundo {
     @JsonProperty("operability")
     public void setOperability(Operability operability) {
         this.operability = operability;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(fullName);
+        dest.writeString(initialDate);
+        dest.writeByte((byte) (isActive ? 1 : 0));
+        dest.writeByte((byte) (isSimple ? 1 : 0));
+        dest.writeString(descriptionSEO);
+        dest.writeString(openingDate);
+        dest.writeByte((byte) (isClosed ? 1 : 0));
+        dest.writeString(simpleName);
+        dest.writeString(targetFund);
+        dest.writeString(quotaDate);
+        dest.writeString(taxClassification);
+        dest.writeString(cnpj);
+        dest.writeByte((byte) (oramaStandard ? 1 : 0));
+        dest.writeString(slug);
+        dest.writeString(volatility12m);
+        dest.writeString(insuranceCompanyCode);
+        dest.writeString(closedToCaptureExplanation);
+        dest.writeString(closingDate);
+        dest.writeString(netPatrimony12m);
+        dest.writeByte((byte) (isClosedToCapture ? 1 : 0));
+        dest.writeByte((byte) (esgSeal ? 1 : 0));
     }
 }

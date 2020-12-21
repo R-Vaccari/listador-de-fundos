@@ -2,7 +2,7 @@ package com.rvapp.listadordefundos;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rvapp.listadordefundos.entidades.Fundo;
+import com.rvapp.listadordefundos.entities.Fundo;
 
 import org.junit.Test;
 

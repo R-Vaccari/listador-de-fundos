@@ -1,8 +1,11 @@
-package com.rvapp.listadordefundos.entidades.fundo.subparts;
+package com.rvapp.listadordefundos.entities.fundo.subparts;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Operability {
+public class Operability implements Parcelable {
     private boolean hasOperationsOnThursdays;
     private String retrievalLiquidationDaysType;
     private String applicationQuotationDaysType;
@@ -36,6 +39,57 @@ public class Operability {
     private String maximumInitialApplicationAmount;
     private boolean hasOperationsOnTuesdays;
     private String minimumSubsequentApplicationAmount;
+
+    public Operability() {
+    }
+
+    protected Operability(Parcel in) {
+        hasOperationsOnThursdays = in.readByte() != 0;
+        retrievalLiquidationDaysType = in.readString();
+        applicationQuotationDaysType = in.readString();
+        retrievalQuotationDays = in.readInt();
+        anticipatedRetrievalQuotationDaysType = in.readString();
+        anticipatedRetrievalQuotationDaysStr = in.readString();
+        retrievalQuotationDaysType = in.readString();
+        anticipatedRetrievalQuotationDays = in.readInt();
+        hasOperationsOnWednesdays = in.readByte() != 0;
+        minimumBalancePermanence = in.readString();
+        hasOperationsOnMondays = in.readByte() != 0;
+        hasGracePeriod = in.readByte() != 0;
+        applicationTimeLimit = in.readString();
+        retrievalTimeLimit = in.readString();
+        hasOperationsOnFridays = in.readByte() != 0;
+        anticipateRetrievalLiquidationDays = in.readInt();
+        minimumInitialApplicationAmount = in.readString();
+        anticipateRetrievalLiquidationDaysType = in.readString();
+        retrievalSpecialType = in.readString();
+        anticipateRetrievalLiquidationDaysStr = in.readString();
+        applicationQuotationDaysStr = in.readString();
+        gracePeriodInDaysStr = in.readString();
+        retrievalQuotationDaysStr = in.readString();
+        gracePeriodInDays = in.readInt();
+        retrievalLiquidationDaysStr = in.readString();
+        minimumSubsequentRetrievalAmount = in.readString();
+        retrievalDirect = in.readByte() != 0;
+        retrievalLiquidationDays = in.readInt();
+        applicationQuotationDays = in.readInt();
+        maxBalancePermanence = in.readString();
+        maximumInitialApplicationAmount = in.readString();
+        hasOperationsOnTuesdays = in.readByte() != 0;
+        minimumSubsequentApplicationAmount = in.readString();
+    }
+
+    public static final Creator<Operability> CREATOR = new Creator<Operability>() {
+        @Override
+        public Operability createFromParcel(Parcel in) {
+            return new Operability(in);
+        }
+
+        @Override
+        public Operability[] newArray(int size) {
+            return new Operability[size];
+        }
+    };
 
     public boolean isHasOperationsOnThursdays() {
         return hasOperationsOnThursdays;
@@ -332,5 +386,47 @@ public class Operability {
     @JsonProperty("minimum_subsequent_application_amount")
     public void setMinimumSubsequentApplicationAmount(String minimumSubsequentApplicationAmount) {
         this.minimumSubsequentApplicationAmount = minimumSubsequentApplicationAmount;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte((byte) (hasOperationsOnThursdays ? 1 : 0));
+        dest.writeString(retrievalLiquidationDaysType);
+        dest.writeString(applicationQuotationDaysType);
+        dest.writeInt(retrievalQuotationDays);
+        dest.writeString(anticipatedRetrievalQuotationDaysType);
+        dest.writeString(anticipatedRetrievalQuotationDaysStr);
+        dest.writeString(retrievalQuotationDaysType);
+        dest.writeInt(anticipatedRetrievalQuotationDays);
+        dest.writeByte((byte) (hasOperationsOnWednesdays ? 1 : 0));
+        dest.writeString(minimumBalancePermanence);
+        dest.writeByte((byte) (hasOperationsOnMondays ? 1 : 0));
+        dest.writeByte((byte) (hasGracePeriod ? 1 : 0));
+        dest.writeString(applicationTimeLimit);
+        dest.writeString(retrievalTimeLimit);
+        dest.writeByte((byte) (hasOperationsOnFridays ? 1 : 0));
+        dest.writeInt(anticipateRetrievalLiquidationDays);
+        dest.writeString(minimumInitialApplicationAmount);
+        dest.writeString(anticipateRetrievalLiquidationDaysType);
+        dest.writeString(retrievalSpecialType);
+        dest.writeString(anticipateRetrievalLiquidationDaysStr);
+        dest.writeString(applicationQuotationDaysStr);
+        dest.writeString(gracePeriodInDaysStr);
+        dest.writeString(retrievalQuotationDaysStr);
+        dest.writeInt(gracePeriodInDays);
+        dest.writeString(retrievalLiquidationDaysStr);
+        dest.writeString(minimumSubsequentRetrievalAmount);
+        dest.writeByte((byte) (retrievalDirect ? 1 : 0));
+        dest.writeInt(retrievalLiquidationDays);
+        dest.writeInt(applicationQuotationDays);
+        dest.writeString(maxBalancePermanence);
+        dest.writeString(maximumInitialApplicationAmount);
+        dest.writeByte((byte) (hasOperationsOnTuesdays ? 1 : 0));
+        dest.writeString(minimumSubsequentApplicationAmount);
     }
 }

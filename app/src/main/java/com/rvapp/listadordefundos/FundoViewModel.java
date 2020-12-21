@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.rvapp.listadordefundos.entidades.Fundo;
+import com.rvapp.listadordefundos.entities.Fundo;
 
 import java.util.List;
 
