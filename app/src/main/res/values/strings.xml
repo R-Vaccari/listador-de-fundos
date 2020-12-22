@@ -3,4 +3,7 @@
     <string name="carregando_fundos">Carregando fundos. Por favor aguarde.</string>
     <string name="card_rentabilidade_12m">Rentabilidade: </string>
     <string name="card_minimum_application">Aplicação mínima: </string>
+
+    <string name="rentabilidade">Rentabilidade</string>
+    <string name="caracteristicas">Características</string>
 </resources>

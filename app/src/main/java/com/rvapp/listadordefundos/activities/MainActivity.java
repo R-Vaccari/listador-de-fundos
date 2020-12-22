@@ -3,7 +3,6 @@ package com.rvapp.listadordefundos.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.ContentLoadingProgressBar;
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             progressText.setVisibility(View.GONE);
             adapter.setListFundos(fundos);
             adapter.notifyDataSetChanged();
-            Toast.makeText(this, String.valueOf(fundos.size()), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -47,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.setClickListener(p -> {
             Intent intent = new Intent(this, FundoActivity.class);
             intent.putExtra("fundo", adapter.getFromPosition(p));
+            startActivity(intent);
         });
-
         recyclerView.setAdapter(adapter);
     }
 }

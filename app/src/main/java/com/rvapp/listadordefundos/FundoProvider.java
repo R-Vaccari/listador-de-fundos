@@ -2,12 +2,14 @@ package com.rvapp.listadordefundos;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.Toast;
 
-import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rvapp.listadordefundos.entities.Fundo;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
@@ -27,6 +29,22 @@ public class FundoProvider {
         networkThread.start();
     }
 
+    public void loadCacheFile() {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            File json = new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json");
+            List<Fundo> fundos = objectMapper.readValue(json, new TypeReference<List<Fundo>>() {
+                @Override
+                public Type getType() {
+                    return super.getType();
+                }
+            });
+            viewModel.postToLiveData(fundos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     static class NetworkRunnable implements Runnable {
         private final Handler mainHandler = new Handler(Looper.getMainLooper());
         private final WeakReference<FundoViewModel> weakReference;
@@ -38,9 +56,9 @@ public class FundoProvider {
         @Override
         public void run() {
             FundoViewModel viewModel = weakReference.get();
-            ObjectMapper objectMapper = new ObjectMapper()
-                    .enable(JsonParser.Feature.IGNORE_UNDEFINED);
+            ObjectMapper objectMapper = new ObjectMapper();
             try {
+                mainHandler.post(() -> Toast.makeText(viewModel.getApplication(), "Sincronizando...", Toast.LENGTH_LONG).show());
                 List<Fundo> fundos = objectMapper.readValue(new URL("https://s3.amazonaws.com/orama-media/json/fund_detail_full.json?serializ%20er=fund_detail_full"), new TypeReference<List<Fundo>>() {
                     @Override
                     public Type getType() {
@@ -48,8 +66,9 @@ public class FundoProvider {
                     }
                 });
                 mainHandler.post(() -> viewModel.postToLiveData(fundos));
+                objectMapper.writeValue(new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json"), fundos);
             } catch (IOException e) {
-                e.printStackTrace();
+                mainHandler.post(() -> Toast.makeText(viewModel.getApplication(), "Houve um erro durante a sincronização!", Toast.LENGTH_LONG).show());
             }
         }
     }

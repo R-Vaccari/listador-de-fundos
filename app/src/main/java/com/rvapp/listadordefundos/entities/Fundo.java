@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.rvapp.listadordefundos.entities.fundo.subparts.Benchmark;
 import com.rvapp.listadordefundos.entities.fundo.subparts.Description;
 import com.rvapp.listadordefundos.entities.fundo.subparts.Document;

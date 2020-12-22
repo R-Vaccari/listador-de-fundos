@@ -12,16 +12,20 @@ import java.util.List;
 
 public class FundoViewModel extends AndroidViewModel {
     private final MutableLiveData<List<Fundo>> fundosMutableLiveData = new MutableLiveData<>();
+    private final Application application;
 
     public FundoViewModel(@NonNull Application application) {
         super(application);
+        this.application = application;
         loadData();
     }
 
     private void loadData() {
         FundoProvider provider = new FundoProvider(this);
+        provider.loadCacheFile();
         provider.load();
     }
+
 
     public MutableLiveData<List<Fundo>> getFundos() {
         if (fundosMutableLiveData.getValue() == null) loadData();
@@ -30,5 +34,9 @@ public class FundoViewModel extends AndroidViewModel {
 
     public void postToLiveData(List<Fundo> fundos) {
         fundosMutableLiveData.setValue(fundos);
+    }
+
+    public Application getApplication() {
+        return application;
     }
 }
