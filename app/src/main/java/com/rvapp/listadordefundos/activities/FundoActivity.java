@@ -13,6 +13,9 @@ import com.google.android.material.textview.MaterialTextView;
 import com.rvapp.listadordefundos.R;
 import com.rvapp.listadordefundos.entities.Fundo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FundoActivity extends AppCompatActivity {
     private Fundo fundo;
 
@@ -40,10 +43,10 @@ public class FundoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         fundo = intent.getExtras().getParcelable("fundo");
         textFullName.setText(fundo.getFullName());
-        textDayProfit.setText(fundo.getProfitabilities().getDay());
-        textMonthProfit.setText(fundo.getProfitabilities().getMonth());
-        text12mProfit.setText(fundo.getProfitabilities().getM12());
-        textYearProfit.setText(fundo.getProfitabilities().getYear());
+        textDayProfit.setText(fundo.getProfitabilities().getDay().substring(0, 6) + "%");
+        textMonthProfit.setText(fundo.getProfitabilities().getMonth().substring(0, 6) + "%");
+        text12mProfit.setText(fundo.getProfitabilities().getM12().substring(0, 6) + "%");
+        textYearProfit.setText(fundo.getProfitabilities().getYear().substring(0, 6) + "%");
         textInvestorType.setText(fundo.getSpecification().getFundSuitabilityProfile().getName());
         textFundRisk.setText(String.valueOf(fundo.getSpecification().getFundRiskProfile().getScoreRangeOrder()));
         setQualifiedTextAndIcon(textQualified, iconQualified);
@@ -53,6 +56,22 @@ public class FundoActivity extends AppCompatActivity {
         textAdmFee.setText(fundo.getFees().getAdministrationFee());
         textPerformanceFee.setText(fundo.getFees().getPerformanceFee());
         textMinimumPermanence.setText(fundo.getOperability().getMinimumBalancePermanence());
+
+        setProfitColors(textDayProfit, textMonthProfit, text12mProfit, textYearProfit);
+    }
+
+    private void setProfitColors(MaterialTextView textDayProfit, MaterialTextView textMonthProfit, MaterialTextView text12mProfit, MaterialTextView textYearProfit) {
+        List<MaterialTextView> profits = new ArrayList<>();
+        profits.add(textDayProfit);
+        profits.add(textMonthProfit);
+        profits.add(text12mProfit);
+        profits.add(textYearProfit);
+        for (MaterialTextView view : profits) {
+            if (view.getText().charAt(0) == '-') view.setTextColor(getResources().getColor(R.color.red));
+            else {
+                view.setTextColor(getResources().getColor(R.color.green_medium));
+            }
+        }
     }
 
     private void setQualifiedTextAndIcon(MaterialTextView textQualified, ImageView iconQualified) {
@@ -64,5 +83,6 @@ public class FundoActivity extends AppCompatActivity {
             iconQualified.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_check_circle_outline_24, getTheme()));
         }
     }
+
 
 }

@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Profitabilities implements Parcelable {
+    private static final String INDISPONIVEL = "Indisponível";
     @JsonProperty("m60")private String m60;
     @JsonProperty("m48") private String m48;
     @JsonProperty("m24") private String m24;
@@ -64,7 +65,8 @@ public class Profitabilities implements Parcelable {
 
 
     public void setM60(String m60) {
-        this.m60 = m60;
+        if (m60 != null) this.m60 = m60;
+        else this.m60 = INDISPONIVEL;
     }
 
     public String getM48() {
@@ -72,7 +74,8 @@ public class Profitabilities implements Parcelable {
     }
 
     public void setM48(String m48) {
-        this.m48 = m48;
+        if (m48 != null) this.m48 = m48;
+        else this.m48 = INDISPONIVEL;
     }
 
     public String getM24() {
@@ -80,7 +83,8 @@ public class Profitabilities implements Parcelable {
     }
 
     public void setM24(String m24) {
-        this.m24 = m24;
+        if (m24 != null) this.m24 = m24;
+        else this.m24 = INDISPONIVEL;
     }
 
     public String getM36() {
@@ -88,7 +92,8 @@ public class Profitabilities implements Parcelable {
     }
 
     public void setM36(String m36) {
-        this.m36 = m36;
+        if (m36 != null) this.m36 = m36;
+        else this.m36 = INDISPONIVEL;
     }
 
     public String getMonth() {
@@ -96,7 +101,8 @@ public class Profitabilities implements Parcelable {
     }
 
     public void setMonth(String month) {
-        this.month = month;
+        if (month != null) this.month = month;
+        else this.month = INDISPONIVEL;
     }
 
     public String getM12() {
@@ -104,7 +110,8 @@ public class Profitabilities implements Parcelable {
     }
 
     public void setM12(String m12) {
-        this.m12 = m12;
+        if (m12 != null) this.m12 = m12;
+        else this.m12 = INDISPONIVEL;
     }
 
     public String getYear() {
@@ -112,7 +119,8 @@ public class Profitabilities implements Parcelable {
     }
 
     public void setYear(String year) {
-        this.year = year;
+        if (year != null) this.year = year;
+        else this.year = INDISPONIVEL;
     }
 
     public String getDay() {
@@ -120,6 +128,7 @@ public class Profitabilities implements Parcelable {
     }
 
     public void setDay(String day) {
-        this.day = day;
+        if (day != null) this.day = day;
+        else this.day = INDISPONIVEL;
     }
 }

@@ -7,6 +7,8 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
 
+    <string name="rentabilidade_indisponivel">Rentabilidade indisponível</string>
+    <string name="indisponivel">Indisponível</string>
     <string name="orama_standard">Órama Standard</string>
     <string name="permanencia_minima">Permanência mínima: </string>
     <string name="movimentacao_minima">Movimentação mínima: </string>
