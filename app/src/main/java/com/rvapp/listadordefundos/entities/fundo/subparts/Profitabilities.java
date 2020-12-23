@@ -6,14 +6,14 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Profitabilities implements Parcelable {
-    private String m60;
-    private String m48;
-    private String m24;
-    private String m36;
-    private String month;
-    private String m12;
-    private String year;
-    private String day;
+    @JsonProperty("m60")private String m60;
+    @JsonProperty("m48") private String m48;
+    @JsonProperty("m24") private String m24;
+    @JsonProperty("m36") private String m36;
+    @JsonProperty("month") private String month;
+    @JsonProperty("m12") private String m12;
+    @JsonProperty("year") private String year;
+    @JsonProperty("day") private String day;
 
     public Profitabilities() {
     }
@@ -62,7 +62,7 @@ public class Profitabilities implements Parcelable {
         return m60;
     }
 
-    @JsonProperty("m60")
+
     public void setM60(String m60) {
         this.m60 = m60;
     }
@@ -71,7 +71,6 @@ public class Profitabilities implements Parcelable {
         return m48;
     }
 
-    @JsonProperty("m48")
     public void setM48(String m48) {
         this.m48 = m48;
     }
@@ -80,7 +79,6 @@ public class Profitabilities implements Parcelable {
         return m24;
     }
 
-    @JsonProperty("m24")
     public void setM24(String m24) {
         this.m24 = m24;
     }
@@ -89,7 +87,6 @@ public class Profitabilities implements Parcelable {
         return m36;
     }
 
-    @JsonProperty("m36")
     public void setM36(String m36) {
         this.m36 = m36;
     }
@@ -98,7 +95,6 @@ public class Profitabilities implements Parcelable {
         return month;
     }
 
-    @JsonProperty("month")
     public void setMonth(String month) {
         this.month = month;
     }
@@ -107,7 +103,6 @@ public class Profitabilities implements Parcelable {
         return m12;
     }
 
-    @JsonProperty("m12")
     public void setM12(String m12) {
         this.m12 = m12;
     }
@@ -116,7 +111,6 @@ public class Profitabilities implements Parcelable {
         return year;
     }
 
-    @JsonProperty("year")
     public void setYear(String year) {
         this.year = year;
     }
@@ -125,7 +119,6 @@ public class Profitabilities implements Parcelable {
         return day;
     }
 
-    @JsonProperty("day")
     public void setDay(String day) {
         this.day = day;
     }

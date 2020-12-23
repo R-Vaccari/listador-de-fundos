@@ -6,12 +6,12 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Fees implements Parcelable {
-    private String maximumAdministrationFee;
-    private String anticipatedRetrievalFeeValue;
-    private String administrationFee;
-    private String anticipatedRetrievalFee;
-    private String performanceFee;
-    private boolean hasAnticipatedRetrieval;
+    @JsonProperty("maximum_administration_fee") private String maximumAdministrationFee;
+    @JsonProperty("anticipated_retrieval_fee_value") private String anticipatedRetrievalFeeValue;
+    @JsonProperty("administration_fee") private String administrationFee;
+    @JsonProperty("anticipated_retrieval_fee") private String anticipatedRetrievalFee;
+    @JsonProperty("performance_fee") private String performanceFee;
+    @JsonProperty("has_anticipated_retrieval") private boolean hasAnticipatedRetrieval;
 
     public Fees() {
     }
@@ -41,7 +41,7 @@ public class Fees implements Parcelable {
         return maximumAdministrationFee;
     }
 
-    @JsonProperty("maximum_administration_fee")
+
     public void setMaximumAdministrationFee(String maximumAdministrationFee) {
         this.maximumAdministrationFee = maximumAdministrationFee;
     }
@@ -50,7 +50,7 @@ public class Fees implements Parcelable {
         return anticipatedRetrievalFeeValue;
     }
 
-    @JsonProperty("anticipated_retrieval_fee_value")
+
     public void setAnticipatedRetrievalFeeValue(String anticipatedRetrievalFeeValue) {
         this.anticipatedRetrievalFeeValue = anticipatedRetrievalFeeValue;
     }
@@ -59,7 +59,7 @@ public class Fees implements Parcelable {
         return administrationFee;
     }
 
-    @JsonProperty("administration_fee")
+
     public void setAdministrationFee(String administrationFee) {
         this.administrationFee = administrationFee;
     }
@@ -68,7 +68,6 @@ public class Fees implements Parcelable {
         return anticipatedRetrievalFee;
     }
 
-    @JsonProperty("anticipated_retrieval_fee")
     public void setAnticipatedRetrievalFee(String anticipatedRetrievalFee) {
         this.anticipatedRetrievalFee = anticipatedRetrievalFee;
     }
@@ -77,7 +76,7 @@ public class Fees implements Parcelable {
         return performanceFee;
     }
 
-    @JsonProperty("performance_fee")
+
     public void setPerformanceFee(String performanceFee) {
         this.performanceFee = performanceFee;
     }
@@ -86,7 +85,7 @@ public class Fees implements Parcelable {
         return hasAnticipatedRetrieval;
     }
 
-    @JsonProperty("has_anticipated_retrieval")
+
     public void setHasAnticipatedRetrieval(boolean hasAnticipatedRetrieval) {
         this.hasAnticipatedRetrieval = hasAnticipatedRetrieval;
     }

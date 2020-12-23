@@ -6,10 +6,10 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FundMainStrategy implements Parcelable {
-    private String explanation;
-    private int fundMacroStrategy;
-    private int id;
-    private String name;
+    @JsonProperty("explanation") private String explanation;
+    @JsonProperty("fund_macro_strategy") private int fundMacroStrategy;
+    @JsonProperty("id") private int id;
+    @JsonProperty("name") private String name;
 
     public FundMainStrategy() {
     }
@@ -50,7 +50,7 @@ public class FundMainStrategy implements Parcelable {
         return explanation;
     }
 
-    @JsonProperty("explanation")
+
     public void setExplanation(String explanation) {
         this.explanation = explanation;
     }
@@ -59,7 +59,7 @@ public class FundMainStrategy implements Parcelable {
         return fundMacroStrategy;
     }
 
-    @JsonProperty("fund_macro_strategy")
+
     public void setFundMacroStrategy(int fundMacroStrategy) {
         this.fundMacroStrategy = fundMacroStrategy;
     }
@@ -68,7 +68,7 @@ public class FundMainStrategy implements Parcelable {
         return id;
     }
 
-    @JsonProperty("id")
+
     public void setId(int id) {
         this.id = id;
     }
@@ -77,7 +77,7 @@ public class FundMainStrategy implements Parcelable {
         return name;
     }
 
-    @JsonProperty("name")
+
     public void setName(String name) {
         this.name = name;
     }

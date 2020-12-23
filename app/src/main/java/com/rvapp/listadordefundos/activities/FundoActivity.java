@@ -23,6 +23,8 @@ public class FundoActivity extends AppCompatActivity {
         MaterialTextView textMonthProfit = findViewById(R.id.fundo_profitability_month_value);
         MaterialTextView text12mProfit = findViewById(R.id.fundo_profitability_12m_value);
         MaterialTextView textYearProfit = findViewById(R.id.fundo_profitability_year_value);
+        MaterialTextView textInvestorType = findViewById(R.id.fundo_profile_investor_type_value);
+        MaterialTextView textFundRisk = findViewById(R.id.fundo_profile_fund_risk_value);
 
         Intent intent = getIntent();
         fundo = intent.getExtras().getParcelable("fundo");
@@ -31,5 +33,7 @@ public class FundoActivity extends AppCompatActivity {
         textMonthProfit.setText(fundo.getProfitabilities().getMonth());
         text12mProfit.setText(fundo.getProfitabilities().getM12());
         textYearProfit.setText(fundo.getProfitabilities().getYear());
+        textInvestorType.setText(fundo.getSpecification().getFundSuitabilityProfile().getName());
+        textFundRisk.setText(String.valueOf(fundo.getSpecification().getFundRiskProfile().getScoreRangeOrder()));
     }
 }

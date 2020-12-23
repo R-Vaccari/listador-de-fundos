@@ -6,11 +6,11 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Description implements Parcelable {
-    private String objective;
-    private String movieURL;
-    private String targetAudience;
-    private String strengths;
-    private String strategy;
+    @JsonProperty("objective") private String objective;
+    @JsonProperty("movie_url") private String movieURL;
+    @JsonProperty("target_audience") private String targetAudience;
+    @JsonProperty("strengths") private String strengths;
+    @JsonProperty("strategy") private String strategy;
 
     public Description() {
     }
@@ -53,7 +53,7 @@ public class Description implements Parcelable {
         return objective;
     }
 
-    @JsonProperty("objective")
+
     public void setObjective(String objective) {
         this.objective = objective;
     }
@@ -62,7 +62,7 @@ public class Description implements Parcelable {
         return movieURL;
     }
 
-    @JsonProperty("movie_url")
+
     public void setMovieURL(String movieURL) {
         this.movieURL = movieURL;
     }
@@ -71,7 +71,7 @@ public class Description implements Parcelable {
         return targetAudience;
     }
 
-    @JsonProperty("target_audience")
+
     public void setTargetAudience(String targetAudience) {
         this.targetAudience = targetAudience;
     }
@@ -80,7 +80,7 @@ public class Description implements Parcelable {
         return strengths;
     }
 
-    @JsonProperty("strengths")
+
     public void setStrengths(String strengths) {
         this.strengths = strengths;
     }
@@ -89,7 +89,7 @@ public class Description implements Parcelable {
         return strategy;
     }
 
-    @JsonProperty("strategy")
+
     public void setStrategy(String strategy) {
         this.strategy = strategy;
     }

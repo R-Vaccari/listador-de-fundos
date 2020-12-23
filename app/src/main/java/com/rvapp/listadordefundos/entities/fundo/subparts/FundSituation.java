@@ -6,8 +6,8 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FundSituation implements Parcelable {
-    private String code;
-    private String name;
+    @JsonProperty("code") private String code;
+    @JsonProperty("name") private String name;
 
     public FundSituation() {
     }
@@ -33,7 +33,7 @@ public class FundSituation implements Parcelable {
         return code;
     }
 
-    @JsonProperty("code")
+
     public void setCode(String code) {
         this.code = code;
     }
@@ -42,7 +42,7 @@ public class FundSituation implements Parcelable {
         return name;
     }
 
-    @JsonProperty("name")
+
     public void setName(String name) {
         this.name = name;
     }

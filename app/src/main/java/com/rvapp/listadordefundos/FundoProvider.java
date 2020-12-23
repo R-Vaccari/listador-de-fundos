@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FundoProvider {
@@ -58,12 +60,10 @@ public class FundoProvider {
             ObjectMapper objectMapper = new ObjectMapper();
             try {
                 mainHandler.post(() -> Toast.makeText(viewModel.getApplication(), "Sincronizando...", Toast.LENGTH_LONG).show());
-                List<Fundo> fundos = objectMapper.readValue(new URL("https://s3.amazonaws.com/orama-media/json/fund_detail_full.json?serializ%20er=fund_detail_full"), new TypeReference<List<Fundo>>() {
-                    @Override
-                    public Type getType() {
-                        return super.getType();
-                    }
-                });
+                Fundo[] fundosArray = objectMapper.readValue(new URL("https://s3.amazonaws.com/orama-media/json/fund_detail_full.json?serializ%20er=fund_detail_full"), Fundo[].class);
+                List<Fundo> fundos = new ArrayList<>();
+                for (Fundo f : fundosArray) System.out.println(f.getId());
+                Collections.addAll(fundos, fundosArray);
                 mainHandler.post(() -> viewModel.postToLiveData(fundos));
                 objectMapper.writeValue(new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json"), fundos);
             } catch (IOException e) {

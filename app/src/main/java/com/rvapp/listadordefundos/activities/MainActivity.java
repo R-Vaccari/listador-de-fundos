@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new FundoAdapter(this);
-        adapter.setHasStableIds(true);
         adapter.setClickListener(p -> {
             Intent intent = new Intent(this, FundoActivity.class);
             intent.putExtra("fundo", adapter.getFromPosition(p));

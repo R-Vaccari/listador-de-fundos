@@ -6,8 +6,8 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Benchmark implements Parcelable {
-    private int id;
-    private String name;
+    @JsonProperty("id") private int id;
+    @JsonProperty("name") private String name;
 
     public Benchmark() {
     }
@@ -33,7 +33,6 @@ public class Benchmark implements Parcelable {
         return id;
     }
 
-    @JsonProperty("id")
     public void setId(int id) {
         this.id = id;
     }
@@ -42,7 +41,6 @@ public class Benchmark implements Parcelable {
         return name;
     }
 
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }

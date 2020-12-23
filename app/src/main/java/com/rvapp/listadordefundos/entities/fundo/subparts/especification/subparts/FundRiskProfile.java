@@ -6,8 +6,8 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FundRiskProfile implements Parcelable {
-    private int scoreRangeOrder;
-    private String name;
+    @JsonProperty("score_range_order") private int scoreRangeOrder;
+    @JsonProperty("name") private String name;
 
     public FundRiskProfile() {
     }
@@ -33,7 +33,6 @@ public class FundRiskProfile implements Parcelable {
         return scoreRangeOrder;
     }
 
-    @JsonProperty("score_range_order")
     public void setScoreRangeOrder(int scoreRangeOrder) {
         this.scoreRangeOrder = scoreRangeOrder;
     }
@@ -42,7 +41,6 @@ public class FundRiskProfile implements Parcelable {
         return name;
     }
 
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }

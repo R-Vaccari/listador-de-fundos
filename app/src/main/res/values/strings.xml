@@ -5,9 +5,12 @@
     <string name="card_minimum_application">Aplicação mínima: </string>
 
     <string name="rentabilidade">Rentabilidade</string>
+    <string name="perfil">Perfil</string>
     <string name="caracteristicas">Características</string>
     <string name="dia">Dia</string>
     <string name="mes">Mês</string>
     <string name="doze_meses">12 meses</string>
     <string name="ano">Ano</string>
+    <string name="tipo_investidor">Tipo de investidor: </string>
+    <string name="nivel_risco">Nível de risco: </string>
 </resources>

@@ -10,18 +10,22 @@ import com.rvapp.listadordefundos.entities.fundo.subparts.especification.subpart
 import com.rvapp.listadordefundos.entities.fundo.subparts.especification.subparts.FundSuitabilityProfile;
 
 public class Specification implements Parcelable {
-    private FundSuitabilityProfile fundSuitabilityProfile;
-    private FundRiskProfile fundRiskProfile;
-    private boolean isQualified;
-    private String fundType;
-    private String fundClass;
-    private FundMacroStrategy fundMacroStrategy;
-    private String fundClassAnbima;
-    private FundMainStrategy fundMainStrategy;
+    @JsonProperty("fund_suitability_profile") private FundSuitabilityProfile fundSuitabilityProfile;
+    @JsonProperty("fund_risk_profile") private FundRiskProfile fundRiskProfile;
+    @JsonProperty("is_qualified") private boolean isQualified;
+    @JsonProperty("fund_type") private String fundType;
+    @JsonProperty("fund_class") private String fundClass;
+    @JsonProperty("fund_macro_strategy") private FundMacroStrategy fundMacroStrategy;
+    @JsonProperty("fund_class_anbima") private String fundClassAnbima;
+    @JsonProperty("fund_main_strategy") private FundMainStrategy fundMainStrategy;
 
     public Specification() {}
 
     protected Specification(Parcel in) {
+        fundSuitabilityProfile = in.readParcelable(FundSuitabilityProfile.class.getClassLoader());
+        fundRiskProfile = in.readParcelable(FundRiskProfile.class.getClassLoader());
+        fundMacroStrategy = in.readParcelable(FundMacroStrategy.class.getClassLoader());
+        fundMainStrategy = in.readParcelable(FundMainStrategy.class.getClassLoader());
         isQualified = in.readByte() != 0;
         fundType = in.readString();
         fundClass = in.readString();
@@ -30,6 +34,10 @@ public class Specification implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(fundSuitabilityProfile, flags);
+        dest.writeParcelable(fundRiskProfile, flags);
+        dest.writeParcelable(fundMacroStrategy, flags);
+        dest.writeParcelable(fundMainStrategy, flags);
         dest.writeByte((byte) (isQualified ? 1 : 0));
         dest.writeString(fundType);
         dest.writeString(fundClass);
@@ -57,7 +65,7 @@ public class Specification implements Parcelable {
         return fundSuitabilityProfile;
     }
 
-    @JsonProperty("fund_suitability_profile")
+
     public void setFundSuitabilityProfile(FundSuitabilityProfile fundSuitabilityProfile) {
         this.fundSuitabilityProfile = fundSuitabilityProfile;
     }
@@ -66,7 +74,7 @@ public class Specification implements Parcelable {
         return fundRiskProfile;
     }
 
-    @JsonProperty("fund_risk_profile")
+
     public void setFundRiskProfile(FundRiskProfile fundRiskProfile) {
         this.fundRiskProfile = fundRiskProfile;
     }
@@ -75,7 +83,7 @@ public class Specification implements Parcelable {
         return isQualified;
     }
 
-    @JsonProperty("is_qualified")
+
     public void setQualified(boolean qualified) {
         isQualified = qualified;
     }
@@ -84,7 +92,7 @@ public class Specification implements Parcelable {
         return fundType;
     }
 
-    @JsonProperty("fund_type")
+
     public void setFundType(String fundType) {
         this.fundType = fundType;
     }
@@ -94,7 +102,7 @@ public class Specification implements Parcelable {
         return fundClass;
     }
 
-    @JsonProperty("fund_class")
+
     public void setFundClass(String fundClass) {
         this.fundClass = fundClass;
     }
@@ -103,7 +111,7 @@ public class Specification implements Parcelable {
         return fundMacroStrategy;
     }
 
-    @JsonProperty("fund_macro_strategy")
+
     public void setFundMacroStrategy(FundMacroStrategy fundMacroStrategy) {
         this.fundMacroStrategy = fundMacroStrategy;
     }
@@ -112,7 +120,7 @@ public class Specification implements Parcelable {
         return fundClassAnbima;
     }
 
-    @JsonProperty("fund_class_anbima")
+
     public void setFundClassAnbima(String fundClassAnbima) {
         this.fundClassAnbima = fundClassAnbima;
     }
@@ -121,7 +129,7 @@ public class Specification implements Parcelable {
         return fundMainStrategy;
     }
 
-    @JsonProperty("fund_main_strategy")
+
     public void setFundMainStrategy(FundMainStrategy fundMainStrategy) {
         this.fundMainStrategy = fundMainStrategy;
     }

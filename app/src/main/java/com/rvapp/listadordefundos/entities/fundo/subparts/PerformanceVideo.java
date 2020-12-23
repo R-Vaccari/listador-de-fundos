@@ -6,14 +6,14 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PerformanceVideo implements Parcelable {
-    private String description;
-    private String title;
-    private String url;
-    private String published;
-    private int id;
-    private boolean enabledForTvOrama;
-    private String youtubeId;
-    private String thumbnail;
+    @JsonProperty("description") private String description;
+    @JsonProperty("title") private String title;
+    @JsonProperty("url") private String url;
+    @JsonProperty("published") private String published;
+    @JsonProperty("id") private int id;
+    @JsonProperty("enabled_for_tvorama") private boolean enabledForTvOrama;
+    @JsonProperty("youtube_id") private String youtubeId;
+    @JsonProperty("thumbnail") private String thumbnail;
 
     public PerformanceVideo() {
     }
@@ -45,7 +45,7 @@ public class PerformanceVideo implements Parcelable {
         return description;
     }
 
-    @JsonProperty("description")
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -54,7 +54,7 @@ public class PerformanceVideo implements Parcelable {
         return title;
     }
 
-    @JsonProperty("title")
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -63,7 +63,7 @@ public class PerformanceVideo implements Parcelable {
         return url;
     }
 
-    @JsonProperty("url")
+
     public void setUrl(String url) {
         this.url = url;
     }
@@ -72,7 +72,7 @@ public class PerformanceVideo implements Parcelable {
         return published;
     }
 
-    @JsonProperty("published")
+
     public void setPublished(String published) {
         this.published = published;
     }
@@ -81,7 +81,7 @@ public class PerformanceVideo implements Parcelable {
         return id;
     }
 
-    @JsonProperty("id")
+
     public void setId(int id) {
         this.id = id;
     }
@@ -90,7 +90,7 @@ public class PerformanceVideo implements Parcelable {
         return enabledForTvOrama;
     }
 
-    @JsonProperty("enabled_for_tvorama")
+
     public void setEnabledForTvOrama(boolean enabledForTvOrama) {
         this.enabledForTvOrama = enabledForTvOrama;
     }
@@ -99,7 +99,7 @@ public class PerformanceVideo implements Parcelable {
         return youtubeId;
     }
 
-    @JsonProperty("youtube_id")
+
     public void setYoutubeId(String youtubeId) {
         this.youtubeId = youtubeId;
     }
@@ -108,7 +108,7 @@ public class PerformanceVideo implements Parcelable {
         return thumbnail;
     }
 
-    @JsonProperty("thumbnail")
+
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }

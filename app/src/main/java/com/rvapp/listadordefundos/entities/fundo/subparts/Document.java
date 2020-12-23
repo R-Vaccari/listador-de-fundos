@@ -6,10 +6,10 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Document implements Parcelable {
-    private int position;
-    private String documentType;
-    private String name;
-    private String documentURL;
+    @JsonProperty("position") private int position;
+    @JsonProperty("document_type") private String documentType;
+    @JsonProperty("name") private String name;
+    @JsonProperty("document_url") private String documentURL;
 
     public Document() {
     }
@@ -37,7 +37,7 @@ public class Document implements Parcelable {
         return position;
     }
 
-    @JsonProperty("position")
+
     public void setPosition(int position) {
         this.position = position;
     }
@@ -46,7 +46,7 @@ public class Document implements Parcelable {
         return documentType;
     }
 
-    @JsonProperty("document_type")
+
     public void setDocumentType(String documentType) {
         this.documentType = documentType;
     }
@@ -55,7 +55,7 @@ public class Document implements Parcelable {
         return name;
     }
 
-    @JsonProperty("name")
+
     public void setName(String name) {
         this.name = name;
     }
@@ -64,7 +64,7 @@ public class Document implements Parcelable {
         return documentURL;
     }
 
-    @JsonProperty("document_url")
+
     public void setDocumentURL(String documentURL) {
         this.documentURL = documentURL;
     }

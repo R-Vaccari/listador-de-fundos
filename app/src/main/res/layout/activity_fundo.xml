@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-black"
-        android:textSize="20sp"
+        style="@style/Titles"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,10 +23,10 @@
         android:id="@+id/fundo_profitability_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
-        android:textSize="16sp"
         android:text="@string/rentabilidade"
-        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Subtitles"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fundo_fullName" />
 
@@ -35,11 +34,10 @@
         android:id="@+id/fundo_profitability_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:text="@string/dia"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/fundo_profitability_subtitle"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
 
@@ -57,11 +55,11 @@
         android:id="@+id/fundo_profitability_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:text="@string/mes"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/fundo_profitability_subtitle"
-        app:layout_constraintStart_toStartOf="@+id/fundo_profitability_subtitle"
+        app:layout_constraintStart_toEndOf="@+id/fundo_profitability_day"
         app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -78,11 +76,11 @@
         android:id="@+id/fundo_profitability_12m"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:text="@string/doze_meses"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/fundo_profitability_subtitle"
-        app:layout_constraintStart_toEndOf="@+id/fundo_profitability_subtitle"
+        app:layout_constraintStart_toEndOf="@+id/fundo_profitability_month"
         app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -99,12 +97,11 @@
         android:id="@+id/fundo_profitability_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:text="@string/ano"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toEndOf="@+id/fundo_profitability_subtitle"
+        app:layout_constraintStart_toEndOf="@+id/fundo_profitability_12m"
         app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -116,4 +113,53 @@
         app:layout_constraintEnd_toEndOf="@id/fundo_profitability_year"
         app:layout_constraintStart_toStartOf="@id/fundo_profitability_year"
         app:layout_constraintTop_toBottomOf="@id/fundo_profitability_year" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fundo_profile_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="96dp"
+        android:text="@string/perfil"
+        style="@style/Subtitles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fundo_profitability_subtitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/fundo_profile_investor_type"
+        android:text="@string/tipo_investidor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fundo_profile_subtitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/fundo_profile_investor_type_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fundo_profile_subtitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/fundo_profile_fund_risk"
+        android:text="@string/nivel_risco"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fundo_profile_investor_type" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/fundo_profile_fund_risk_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fundo_profile_investor_type" />
 </androidx.constraintlayout.widget.ConstraintLayout>

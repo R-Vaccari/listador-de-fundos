@@ -6,12 +6,12 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FundManager implements Parcelable {
-    private String description;
-    private int id;
-    private String fullName;
-    private String logo;
-    private String slug;
-    private String name;
+    @JsonProperty("description") private String description;
+    @JsonProperty("id") private int id;
+    @JsonProperty("full_name") private String fullName;
+    @JsonProperty("logo") private String logo;
+    @JsonProperty("slug") private String slug;
+    @JsonProperty("name") private String name;
 
     public FundManager() {
     }
@@ -41,7 +41,7 @@ public class FundManager implements Parcelable {
         return description;
     }
 
-    @JsonProperty("description")
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -50,7 +50,7 @@ public class FundManager implements Parcelable {
         return id;
     }
 
-    @JsonProperty("id")
+
     public void setId(int id) {
         this.id = id;
     }
@@ -59,7 +59,7 @@ public class FundManager implements Parcelable {
         return fullName;
     }
 
-    @JsonProperty("full_name")
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
@@ -68,7 +68,7 @@ public class FundManager implements Parcelable {
         return logo;
     }
 
-    @JsonProperty("logo")
+
     public void setLogo(String logo) {
         this.logo = logo;
     }
@@ -77,7 +77,7 @@ public class FundManager implements Parcelable {
         return slug;
     }
 
-    @JsonProperty("slug")
+
     public void setSlug(String slug) {
         this.slug = slug;
     }
@@ -86,7 +86,7 @@ public class FundManager implements Parcelable {
         return name;
     }
 
-    @JsonProperty("name")
+
     public void setName(String name) {
         this.name = name;
     }
