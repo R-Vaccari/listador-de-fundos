@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
@@ -55,5 +56,28 @@
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_fundo_text_fund_profitability_12m" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/card_fundo_text_fund_orama_standard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="6dp"
+            android:textSize="12sp"
+            android:text="@string/orama_standard"
+            android:textColor="@color/green_medium"
+            app:layout_constraintTop_toBottomOf="@id/card_fundo_text_fund_profitability_12m"
+            app:layout_constraintEnd_toStartOf="@+id/card_fundo_icon_standard" />
+
+        <ImageView
+            android:id="@+id/card_fundo_icon_standard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/ic_baseline_check_circle_24"
+            android:backgroundTint="@color/green_medium"
+            app:layout_constraintTop_toBottomOf="@id/card_fundo_text_fund_profitability_12m"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

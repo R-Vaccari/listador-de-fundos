@@ -60,10 +60,12 @@ public class FundoProvider {
             ObjectMapper objectMapper = new ObjectMapper();
             try {
                 mainHandler.post(() -> Toast.makeText(viewModel.getApplication(), "Sincronizando...", Toast.LENGTH_LONG).show());
-                Fundo[] fundosArray = objectMapper.readValue(new URL("https://s3.amazonaws.com/orama-media/json/fund_detail_full.json?serializ%20er=fund_detail_full"), Fundo[].class);
-                List<Fundo> fundos = new ArrayList<>();
-                for (Fundo f : fundosArray) System.out.println(f.getId());
-                Collections.addAll(fundos, fundosArray);
+                List<Fundo> fundos = objectMapper.readValue(new URL("https://s3.amazonaws.com/orama-media/json/fund_detail_full.json?serializ%20er=fund_detail_full"), new TypeReference<List<Fundo>>() {
+                    @Override
+                    public Type getType() {
+                        return super.getType();
+                    }
+                });
                 mainHandler.post(() -> viewModel.postToLiveData(fundos));
                 objectMapper.writeValue(new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json"), fundos);
             } catch (IOException e) {

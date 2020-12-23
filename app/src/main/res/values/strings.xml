@@ -4,6 +4,15 @@
     <string name="card_rentabilidade_12m">Rentabilidade: </string>
     <string name="card_minimum_application">Aplicação mínima: </string>
 
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+
+    <string name="orama_standard">Órama Standard</string>
+    <string name="permanencia_minima">Permanência mínima: </string>
+    <string name="movimentacao_minima">Movimentação mínima: </string>
+    <string name="taxa_adm">Taxa administrativa: </string>
+    <string name="taxa_performance">Taxa de perf.: </string>
+    <string name="tipo_fundo">Tipo de fundo: </string>
     <string name="rentabilidade">Rentabilidade</string>
     <string name="perfil">Perfil</string>
     <string name="caracteristicas">Características</string>
@@ -12,5 +21,6 @@
     <string name="doze_meses">12 meses</string>
     <string name="ano">Ano</string>
     <string name="tipo_investidor">Tipo de investidor: </string>
+    <string name="investidor_qualificado">Investidor qualificado: </string>
     <string name="nivel_risco">Nível de risco: </string>
 </resources>

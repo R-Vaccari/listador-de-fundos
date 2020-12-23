@@ -50,6 +50,14 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
         holder.textFundType.setText(fundo.getSpecification().getFundType());
         holder.textProfitability12m.setText(context.getText(R.string.card_rentabilidade_12m) + fundo.getProfitabilities().getM12());
         holder.textMinimumApplication.setText(context.getText(R.string.card_minimum_application) + "R$" + fundo.getOperability().getMinimumInitialApplicationAmount());
+
+        if (fundo.isOramaStandard()) {
+            holder.iconOramaStandard.setVisibility(View.VISIBLE);
+            holder.textOramaStandard.setVisibility(View.VISIBLE);
+        } else {
+            holder.iconOramaStandard.setVisibility(View.GONE);
+            holder.textOramaStandard.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -82,6 +90,8 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
         public MaterialTextView textFundType;
         public MaterialTextView textProfitability12m;
         public MaterialTextView textMinimumApplication;
+        public MaterialTextView textOramaStandard;
+        public ImageView iconOramaStandard;
 
         public HolderFundo(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
@@ -90,6 +100,8 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
             textFundType = itemView.findViewById(R.id.card_fundo_text_fund_type);
             textProfitability12m = itemView.findViewById(R.id.card_fundo_text_fund_profitability_12m);
             textMinimumApplication = itemView.findViewById(R.id.card_fundo_text_fund_minimum_application);
+            textOramaStandard = itemView.findViewById(R.id.card_fundo_text_fund_orama_standard);
+            iconOramaStandard = itemView.findViewById(R.id.card_fundo_icon_standard);
             itemView.setOnClickListener(v -> {
                 if (listener != null) {
                     if (getAdapterPosition() != RecyclerView.NO_POSITION) listener.onItemClick(getAdapterPosition());
