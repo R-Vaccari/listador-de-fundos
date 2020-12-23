@@ -6,4 +6,8 @@
 
     <string name="rentabilidade">Rentabilidade</string>
     <string name="caracteristicas">Características</string>
+    <string name="dia">Dia</string>
+    <string name="mes">Mês</string>
+    <string name="doze_meses">12 meses</string>
+    <string name="ano">Ano</string>
 </resources>

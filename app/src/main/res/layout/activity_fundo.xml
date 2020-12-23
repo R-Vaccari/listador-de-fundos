@@ -15,6 +15,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
         android:textSize="20sp"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,11 +26,94 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:textSize="16sp"
-        android:letterSpacing="0.15"
         android:text="@string/rentabilidade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fundo_fullName" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fundo_profitability_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/dia"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/fundo_profitability_subtitle"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fundo_profitability_day_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/fundo_profitability_day"
+        app:layout_constraintStart_toStartOf="@id/fundo_profitability_day"
+        app:layout_constraintTop_toBottomOf="@id/fundo_profitability_day" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fundo_profitability_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/mes"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/fundo_profitability_subtitle"
+        app:layout_constraintStart_toStartOf="@+id/fundo_profitability_subtitle"
+        app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fundo_profitability_month_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/fundo_profitability_month"
+        app:layout_constraintStart_toStartOf="@id/fundo_profitability_month"
+        app:layout_constraintTop_toBottomOf="@id/fundo_profitability_month" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fundo_profitability_12m"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/doze_meses"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/fundo_profitability_subtitle"
+        app:layout_constraintStart_toEndOf="@+id/fundo_profitability_subtitle"
+        app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fundo_profitability_12m_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/fundo_profitability_12m"
+        app:layout_constraintStart_toStartOf="@id/fundo_profitability_12m"
+        app:layout_constraintTop_toBottomOf="@id/fundo_profitability_12m" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fundo_profitability_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/ano"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toEndOf="@+id/fundo_profitability_subtitle"
+        app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fundo_profitability_year_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/fundo_profitability_year"
+        app:layout_constraintStart_toStartOf="@id/fundo_profitability_year"
+        app:layout_constraintTop_toBottomOf="@id/fundo_profitability_year" />
 </androidx.constraintlayout.widget.ConstraintLayout>

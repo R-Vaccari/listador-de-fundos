@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rvapp.listadordefundos.entities.Fundo;
@@ -41,7 +40,7 @@ public class FundoProvider {
             });
             viewModel.postToLiveData(fundos);
         } catch (IOException e) {
-            e.printStackTrace();
+            Toast.makeText(viewModel.getApplication(), "Houve um erro durante a recuperação do cache!", Toast.LENGTH_LONG).show();
         }
     }
 

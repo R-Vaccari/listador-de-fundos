@@ -48,7 +48,7 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
         colorLateralBar(fundo, holder.lateralBar);
         holder.textSimpleName.setText(fundo.getSimpleName());
         holder.textFundType.setText(fundo.getSpecification().getFundType());
-        holder.textProfitability12m.setText(context.getText(R.string.card_rentabilidade_12m) + fundo.getProfitabilities().getM12() + "%");
+        holder.textProfitability12m.setText(context.getText(R.string.card_rentabilidade_12m) + fundo.getProfitabilities().getM12());
         holder.textMinimumApplication.setText(context.getText(R.string.card_minimum_application) + "R$" + fundo.getOperability().getMinimumInitialApplicationAmount());
     }
 

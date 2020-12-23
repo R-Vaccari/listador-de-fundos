@@ -58,6 +58,18 @@ public class Fundo implements Parcelable {
     }
 
     protected Fundo(Parcel in) {
+        benchmark = in.readParcelable(Benchmark.class.getClassLoader());
+        description = in.readParcelable(Description.class.getClassLoader());
+        documents = in.createTypedArray(Document.CREATOR);
+        fees = in.readParcelable(Fees.class.getClassLoader());
+        fundManager = in.readParcelable(FundManager.class.getClassLoader());
+        fundSituation = in.readParcelable(FundSituation.class.getClassLoader());
+        operability = in.readParcelable(Operability.class.getClassLoader());
+        performanceAudios =  in.createTypedArray(PerformanceAudio.CREATOR);
+        performanceVideos =  in.createTypedArray(PerformanceVideo.CREATOR);
+        profitabilities = in.readParcelable(Profitabilities.class.getClassLoader());
+        specification = in.readParcelable(Specification.class.getClassLoader());
+        strategyVideo = in.readParcelable(StrategyVideo.class.getClassLoader());
         id = in.readInt();
         fullName = in.readString();
         initialDate = in.readString();
@@ -407,6 +419,18 @@ public class Fundo implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(benchmark, flags);
+        dest.writeParcelable(description, flags);
+        dest.writeTypedArray(documents, flags);
+        dest.writeParcelable(fees, flags);
+        dest.writeParcelable(fundManager, flags);
+        dest.writeParcelable(fundSituation, flags);
+        dest.writeParcelable(operability, flags);
+        dest.writeTypedArray(performanceAudios, flags);
+        dest.writeTypedArray(performanceVideos, flags);
+        dest.writeParcelable(profitabilities, flags);
+        dest.writeParcelable(specification, flags);
+        dest.writeParcelable(strategyVideo, flags);
         dest.writeInt(id);
         dest.writeString(fullName);
         dest.writeString(initialDate);
