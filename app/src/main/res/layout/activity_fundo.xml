@@ -13,6 +13,17 @@
         android:layout_margin="8dp"
         android:paddingBottom="32dp">
 
+        <View
+            android:id="@+id/middle"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/fundo_fullName"
             android:layout_width="match_parent"
@@ -50,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="12sp"
+            style="@style/ProfitDetails"
             app:layout_constraintEnd_toEndOf="@id/fundo_profitability_day"
             app:layout_constraintStart_toStartOf="@id/fundo_profitability_day"
             app:layout_constraintTop_toBottomOf="@id/fundo_profitability_day" />
@@ -71,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="12sp"
+            style="@style/ProfitDetails"
             app:layout_constraintEnd_toEndOf="@id/fundo_profitability_month"
             app:layout_constraintStart_toStartOf="@id/fundo_profitability_month"
             app:layout_constraintTop_toBottomOf="@id/fundo_profitability_month" />
@@ -92,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="12sp"
+            style="@style/ProfitDetails"
             app:layout_constraintEnd_toEndOf="@id/fundo_profitability_12m"
             app:layout_constraintStart_toStartOf="@id/fundo_profitability_12m"
             app:layout_constraintTop_toBottomOf="@id/fundo_profitability_12m" />
@@ -113,12 +124,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="12sp"
+            style="@style/ProfitDetails"
             app:layout_constraintEnd_toEndOf="@id/fundo_profitability_year"
             app:layout_constraintStart_toStartOf="@id/fundo_profitability_year"
             app:layout_constraintTop_toBottomOf="@id/fundo_profitability_year" />
 
         <View
+            android:id="@+id/view"
             android:layout_width="250dp"
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
@@ -222,13 +234,16 @@
             app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_qualified" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
             android:id="@+id/fundo_profile_fund_class_value"
+            style="@style/ActivityContents"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAlignment="textEnd"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/middle"
             app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_qualified" />
 
         <View
@@ -249,7 +264,7 @@
             android:text="@string/caracteristicas"
             style="@style/Subtitles"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_class" />
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_class_value" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -355,5 +370,137 @@
             android:id="@+id/fundo_profile_fund_minimum_permanence_value"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_performance_fee" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/fundo_profile_fund_liquidation_retrieval"
+            android:text="@string/liquidez_resgate"
+            style="@style/ActivityContents"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_permanence" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fundo_profile_fund_liquidation_retrieval_value"
+            style="@style/ActivityContents"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/middle"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_permanence" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/fundo_profile_fund_time_limit"
+            android:text="@string/horario_limite"
+            style="@style/ActivityContents"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_liquidation_retrieval_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            style="@style/ActivityContents"
+            android:id="@+id/fundo_profile_fund_time_limit_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_liquidation_retrieval_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/fundo_profile_fund_cnpj"
+            android:text="@string/cnpj"
+            style="@style/ActivityContents"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_time_limit" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            style="@style/ActivityContents"
+            android:id="@+id/fundo_profile_fund_cnpj_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_time_limit" />
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:background="?android:attr/dividerVertical"
+            app:layout_constraintBottom_toTopOf="@+id/fundo_manager_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fundo_manager_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/administradora"
+            style="@style/Subtitles"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_cnpj_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/fundo_profile_manager_fullname"
+            android:text="@string/nome"
+            style="@style/ActivityContents"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_manager_subtitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            style="@style/ActivityContents"
+            android:id="@+id/fundo_profile_manager_fullname_value"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/middle"
+            app:layout_constraintTop_toBottomOf="@id/fundo_manager_subtitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/fundo_profile_manager_description"
+            android:text="@string/descricao"
+            style="@style/ActivityContents"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_manager_fullname_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fundo_profile_manager_description_value"
+            style="@style/ActivityContents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fundo_profile_manager_description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

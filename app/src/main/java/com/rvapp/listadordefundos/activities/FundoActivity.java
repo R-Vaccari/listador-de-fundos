@@ -2,7 +2,6 @@ package com.rvapp.listadordefundos.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -39,6 +38,11 @@ public class FundoActivity extends AppCompatActivity {
         MaterialTextView textAdmFee = findViewById(R.id.fundo_profile_fund_adm_fee_value);
         MaterialTextView textPerformanceFee = findViewById(R.id.fundo_profile_fund_performance_fee_value);
         MaterialTextView textMinimumPermanence = findViewById(R.id.fundo_profile_fund_minimum_permanence_value);
+        MaterialTextView textRetrievalLiquidation = findViewById(R.id.fundo_profile_fund_liquidation_retrieval_value);
+        MaterialTextView textTimeLimit = findViewById(R.id.fundo_profile_fund_time_limit_value);
+        MaterialTextView textCNPJ = findViewById(R.id.fundo_profile_fund_cnpj_value);
+        MaterialTextView textManagerName = findViewById(R.id.fundo_profile_manager_fullname_value);
+        MaterialTextView textManagerDescription = findViewById(R.id.fundo_profile_manager_description_value);
 
         Intent intent = getIntent();
         fundo = intent.getExtras().getParcelable("fundo");
@@ -56,6 +60,11 @@ public class FundoActivity extends AppCompatActivity {
         textAdmFee.setText(fundo.getFees().getAdministrationFee());
         textPerformanceFee.setText(fundo.getFees().getPerformanceFee());
         textMinimumPermanence.setText(fundo.getOperability().getMinimumBalancePermanence());
+        textRetrievalLiquidation.setText(fundo.getOperability().getRetrievalLiquidationDaysStr());
+        textTimeLimit.setText(fundo.getOperability().getRetrievalTimeLimit());
+        textCNPJ.setText(fundo.getCnpj());
+        textManagerName.setText(fundo.getFundManager().getFullName());
+        textManagerDescription.setText(fundo.getFundManager().getDescription());
 
         setProfitColors(textDayProfit, textMonthProfit, text12mProfit, textYearProfit);
     }

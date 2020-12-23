@@ -7,6 +7,12 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
 
+    <string name="cnpj">CNPJ: </string>
+    <string name="nome">Nome: </string>
+    <string name="descricao">Descrição: </string>
+    <string name="administradora">Administradora</string>
+    <string name="horario_limite">Horário limite: </string>
+    <string name="liquidez_resgate">Liquidez de resgate: </string>
     <string name="rentabilidade_indisponivel">Rentabilidade indisponível</string>
     <string name="indisponivel">Indisponível</string>
     <string name="orama_standard">Órama Standard</string>
