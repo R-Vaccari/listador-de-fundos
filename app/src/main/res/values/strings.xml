@@ -7,6 +7,8 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
 
+    <string name="thumbnail_descricao">Vídeo sobre o fundo</string>
+    <string name="midia">Mídia</string>
     <string name="cnpj">CNPJ: </string>
     <string name="nome">Nome: </string>
     <string name="descricao">Descrição: </string>

@@ -7,10 +7,14 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.rvapp.listadordefundos.R;
+import com.rvapp.listadordefundos.VideoAdapter;
 import com.rvapp.listadordefundos.entities.Fundo;
+import com.rvapp.listadordefundos.ui.main.FundoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +26,21 @@ public class FundoActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fundo);
+        setMainViews();
+        RecyclerView recyclerView = findViewById(R.id.fundo_profile_videos_recycler);
+        configureRecycler(recyclerView);
+    }
 
+    private void configureRecycler(RecyclerView recyclerView) {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        VideoAdapter adapter = new VideoAdapter();
+        adapter.setListFundos(fundo.getPerformanceVideos());
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void setMainViews() {
         MaterialTextView textFullName = findViewById(R.id.fundo_fullName);
         MaterialTextView textDayProfit = findViewById(R.id.fundo_profitability_day_value);
         MaterialTextView textMonthProfit = findViewById(R.id.fundo_profitability_month_value);
@@ -42,7 +60,6 @@ public class FundoActivity extends AppCompatActivity {
         MaterialTextView textTimeLimit = findViewById(R.id.fundo_profile_fund_time_limit_value);
         MaterialTextView textCNPJ = findViewById(R.id.fundo_profile_fund_cnpj_value);
         MaterialTextView textManagerName = findViewById(R.id.fundo_profile_manager_fullname_value);
-        MaterialTextView textManagerDescription = findViewById(R.id.fundo_profile_manager_description_value);
 
         Intent intent = getIntent();
         fundo = intent.getExtras().getParcelable("fundo");
@@ -64,7 +81,6 @@ public class FundoActivity extends AppCompatActivity {
         textTimeLimit.setText(fundo.getOperability().getRetrievalTimeLimit());
         textCNPJ.setText(fundo.getCnpj());
         textManagerName.setText(fundo.getFundManager().getFullName());
-        textManagerDescription.setText(fundo.getFundManager().getDescription());
 
         setProfitColors(textDayProfit, textMonthProfit, text12mProfit, textYearProfit);
     }

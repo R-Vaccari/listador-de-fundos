@@ -1,4 +1,4 @@
-package com.rvapp.listadordefundos;
+package com.rvapp.listadordefundos.ui.main;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,13 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.rvapp.listadordefundos.R;
 import com.rvapp.listadordefundos.entities.Fundo;
 
 import java.util.List;
 
 public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo> {
     private List<Fundo> listFundos;
-    private Context context;
+    private final Context context;
     private OnItemClickListener clickListener;
 
     public FundoAdapter(Context context) {
@@ -48,7 +49,7 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
         colorLateralBar(fundo, holder.lateralBar);
         holder.textSimpleName.setText(fundo.getSimpleName());
         holder.textFundType.setText(fundo.getSpecification().getFundType());
-        holder.textProfitability12m.setText(context.getText(R.string.card_rentabilidade_12m) + fundo.getProfitabilities().getM12());
+        holder.textProfitability12m.setText(context.getText(R.string.card_rentabilidade_12m) + fundo.getProfitabilities().getM12() + "%");
         holder.textMinimumApplication.setText(context.getText(R.string.card_minimum_application) + "R$" + fundo.getOperability().getMinimumInitialApplicationAmount());
 
         if (fundo.isOramaStandard()) {

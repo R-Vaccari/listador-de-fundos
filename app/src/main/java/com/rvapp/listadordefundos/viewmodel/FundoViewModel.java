@@ -1,4 +1,4 @@
-package com.rvapp.listadordefundos;
+package com.rvapp.listadordefundos.viewmodel;
 
 import android.app.Application;
 
@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.rvapp.listadordefundos.entities.Fundo;
+import com.rvapp.listadordefundos.model.FundoProvider;
 
 import java.util.List;
 

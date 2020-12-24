@@ -1,13 +1,12 @@
-package com.rvapp.listadordefundos;
+package com.rvapp.listadordefundos.model;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.rvapp.listadordefundos.viewmodel.FundoViewModel;
 import com.rvapp.listadordefundos.entities.Fundo;
 
 import java.io.File;
@@ -15,8 +14,6 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class FundoProvider {

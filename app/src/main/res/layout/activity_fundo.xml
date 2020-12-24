@@ -437,26 +437,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_time_limit" />
 
-        <View
-            android:layout_width="250dp"
-            android:layout_height="1dp"
-            android:layout_marginBottom="16dp"
-            android:background="?android:attr/dividerVertical"
-            app:layout_constraintBottom_toTopOf="@+id/fundo_manager_subtitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_manager_subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/administradora"
-            style="@style/Subtitles"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_cnpj_value" />
-
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -466,7 +446,7 @@
             android:text="@string/nome"
             style="@style/ActivityContents"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_manager_subtitle" />
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_cnpj" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="0dp"
@@ -479,28 +459,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/middle"
-            app:layout_constraintTop_toBottomOf="@id/fundo_manager_subtitle" />
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_cnpj" />
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:background="?android:attr/dividerVertical"
+            app:layout_constraintBottom_toTopOf="@id/fundo_profile_media_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fundo_profile_media_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_manager_description"
-            android:text="@string/descricao"
-            style="@style/ActivityContents"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/midia"
+            style="@style/Subtitles"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fundo_profile_manager_fullname_value" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profile_manager_description_value"
-            style="@style/ActivityContents"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textAlignment="center"
+            android:layout_height="125dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/fundo_profile_videos_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fundo_profile_manager_description" />
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_subtitle" >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/fundo_profile_videos_recycler"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
