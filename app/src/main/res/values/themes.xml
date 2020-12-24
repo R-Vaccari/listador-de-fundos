@@ -20,6 +20,10 @@
     <style name="ActivityContents">
         <item name="android:textSize">14sp</item>
     </style>
+    <style name="MediaHeaders">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="ProfitDetails">
         <item name="android:textSize">12sp</item>
         <item name="android:textAlignment">center</item>

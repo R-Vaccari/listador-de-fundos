@@ -7,6 +7,9 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
 
+    <string name="nao_ha_videos_disponiveis">Não há vídeos disponíveis para este fundo.</string>
+    <string name="performance">Performance</string>
+    <string name="estrategia">Estratégia</string>
     <string name="thumbnail_descricao">Vídeo sobre o fundo</string>
     <string name="midia">Mídia</string>
     <string name="cnpj">CNPJ: </string>

@@ -1,6 +1,5 @@
 package com.rvapp.listadordefundos;
 
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.rvapp.listadordefundos.entities.fundo.subparts.PerformanceVideo;
 
 import java.util.ArrayList;
@@ -32,6 +32,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.HolderVideo>
         this.clickListener = clickListener;
     }
 
+    public PerformanceVideo getFromPosition(int position) {
+        return listVideos.get(position);
+    }
+
     @NonNull
     @Override
     public HolderVideo onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,9 +45,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.HolderVideo>
 
     @Override
     public void onBindViewHolder(@NonNull HolderVideo holder, int position) {
-       PerformanceVideo video = listVideos.get(position);
-       holder.thumbnail.setImageURI(Uri.parse(video.getThumbnail()));
-       holder.videoTitle.setText(video.getTitle());
+        PerformanceVideo video = listVideos.get(position);
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(video.getThumbnail(), holder.thumbnail);
+        holder.videoTitle.setText(video.getTitle());
     }
 
     @Override

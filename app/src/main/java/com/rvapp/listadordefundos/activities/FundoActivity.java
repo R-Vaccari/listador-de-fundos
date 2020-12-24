@@ -1,7 +1,9 @@
 package com.rvapp.listadordefundos.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -11,10 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.rvapp.listadordefundos.R;
 import com.rvapp.listadordefundos.VideoAdapter;
 import com.rvapp.listadordefundos.entities.Fundo;
-import com.rvapp.listadordefundos.ui.main.FundoAdapter;
+import com.rvapp.listadordefundos.entities.fundo.subparts.PerformanceVideo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +40,12 @@ public class FundoActivity extends AppCompatActivity {
 
         VideoAdapter adapter = new VideoAdapter();
         adapter.setListFundos(fundo.getPerformanceVideos());
+        adapter.setClickListener(p -> {
+            PerformanceVideo video = adapter.getFromPosition(p);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(video.getUrl()));
+            startActivity(intent);
+        });
         recyclerView.setAdapter(adapter);
     }
 
@@ -60,6 +69,8 @@ public class FundoActivity extends AppCompatActivity {
         MaterialTextView textTimeLimit = findViewById(R.id.fundo_profile_fund_time_limit_value);
         MaterialTextView textCNPJ = findViewById(R.id.fundo_profile_fund_cnpj_value);
         MaterialTextView textManagerName = findViewById(R.id.fundo_profile_manager_fullname_value);
+        MaterialTextView textStrategyVideoTitle = findViewById(R.id.fundo_profile_strategy_video_title);
+        ImageView strategyVideoThumbnail = findViewById(R.id.fundo_profile_strategy_video_thumbnail);
 
         Intent intent = getIntent();
         fundo = intent.getExtras().getParcelable("fundo");
@@ -82,21 +93,35 @@ public class FundoActivity extends AppCompatActivity {
         textCNPJ.setText(fundo.getCnpj());
         textManagerName.setText(fundo.getFundManager().getFullName());
 
-        setProfitColors(textDayProfit, textMonthProfit, text12mProfit, textYearProfit);
+        setProfitColors(textDayProfit);
+        setProfitColors(textMonthProfit);
+        setProfitColors(text12mProfit);
+        setProfitColors(textYearProfit);
+        if (fundo.getPerformanceVideos().length == 0) {
+            MaterialTextView textStrategyUnavailable = findViewById(R.id.fundo_profile_media_performance_unavailable);
+            textStrategyUnavailable.setVisibility(View.VISIBLE);
+        }
+        if (fundo.getStrategyVideo() != null) setStrategyVideo(textStrategyVideoTitle, strategyVideoThumbnail);
+        else {
+            MaterialTextView textStrategyUnavailable = findViewById(R.id.fundo_profile_media_strategy_unavailable);
+            textStrategyUnavailable.setVisibility(View.VISIBLE);
+        }
     }
 
-    private void setProfitColors(MaterialTextView textDayProfit, MaterialTextView textMonthProfit, MaterialTextView text12mProfit, MaterialTextView textYearProfit) {
-        List<MaterialTextView> profits = new ArrayList<>();
-        profits.add(textDayProfit);
-        profits.add(textMonthProfit);
-        profits.add(text12mProfit);
-        profits.add(textYearProfit);
-        for (MaterialTextView view : profits) {
-            if (view.getText().charAt(0) == '-') view.setTextColor(getResources().getColor(R.color.red));
-            else {
-                view.setTextColor(getResources().getColor(R.color.green_medium));
-            }
-        }
+    private void setStrategyVideo(MaterialTextView textStrategyVideoTitle, ImageView strategyVideoThumbnail) {
+        textStrategyVideoTitle.setText(fundo.getStrategyVideo().getTitle());
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(fundo.getStrategyVideo().getThumbnail(), strategyVideoThumbnail);
+        strategyVideoThumbnail.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(fundo.getStrategyVideo().getUrl()));
+            startActivity(intent);
+        });
+    }
+
+    private void setProfitColors(MaterialTextView view) {
+        if (view.getText().charAt(0) == '-') view.setTextColor(getResources().getColor(R.color.red));
+        else view.setTextColor(getResources().getColor(R.color.green_medium));
     }
 
     private void setQualifiedTextAndIcon(MaterialTextView textQualified, ImageView iconQualified) {
@@ -108,6 +133,4 @@ public class FundoActivity extends AppCompatActivity {
             iconQualified.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_check_circle_outline_24, getTheme()));
         }
     }
-
-
 }

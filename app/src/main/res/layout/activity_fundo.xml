@@ -10,9 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:paddingBottom="32dp">
-
+        android:layout_margin="8dp">
         <View
             android:id="@+id/middle"
             android:layout_width="1dp"
@@ -443,7 +441,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:id="@+id/fundo_profile_manager_fullname"
-            android:text="@string/nome"
+            android:text="@string/administradora"
             style="@style/ActivityContents"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_cnpj" />
@@ -481,6 +479,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fundo_profile_manager_fullname_value" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/ic_baseline_video_library_24"
+            app:layout_constraintStart_toEndOf="@+id/fundo_profile_media_subtitle"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_manager_fullname_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fundo_profile_media_performance_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/performance"
+            style="@style/MediaHeaders"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_subtitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fundo_profile_media_performance_unavailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/nao_ha_videos_disponiveis"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_performance_header" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
@@ -488,15 +517,69 @@
             android:id="@+id/fundo_profile_videos_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_subtitle" >
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_performance_header" >
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/fundo_profile_videos_recycler"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fundo_profile_media_strategy_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/estrategia"
+            style="@style/MediaHeaders"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_videos_layout" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fundo_profile_media_strategy_unavailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/nao_ha_videos_disponiveis"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_strategy_header" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="200dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_strategy_header">
+            <ImageView
+                android:id="@+id/fundo_profile_strategy_video_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/thumbnail_descricao" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/fundo_profile_strategy_video_title"
+                android:layout_marginTop="8dp"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_strategy_video_thumbnail" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_strategy_unavailable"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
