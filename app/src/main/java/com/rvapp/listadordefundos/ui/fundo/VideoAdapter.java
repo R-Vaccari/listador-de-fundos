@@ -1,4 +1,4 @@
-package com.rvapp.listadordefundos;
+package com.rvapp.listadordefundos.ui.fundo;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.rvapp.listadordefundos.R;
 import com.rvapp.listadordefundos.entities.fundo.subparts.PerformanceVideo;
 
 import java.util.ArrayList;

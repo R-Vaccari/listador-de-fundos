@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.nostra13.universalimageloader.cache.disc.DiskCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.IoUtils;
@@ -21,45 +22,11 @@ public class App extends Application {
     }
 
     public void initImageLoader(Context context) {
-        Application application = this;
-        ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
-        config.diskCache(new DiskCache() {
-            @Override
-            public File getDirectory() {
-                return new File(application.getCacheDir().getAbsolutePath());
-            }
-
-            @Override
-            public File get(String imageUri) {
-                return new File(imageUri);
-            }
-
-            @Override
-            public boolean save(String imageUri, InputStream imageStream, IoUtils.CopyListener listener) throws IOException {
-                return false;
-            }
-
-            @Override
-            public boolean save(String imageUri, Bitmap bitmap) throws IOException {
-                return false;
-            }
-
-            @Override
-            public boolean remove(String imageUri) {
-                return false;
-            }
-
-            @Override
-            public void close() {
-
-            }
-
-            @Override
-            public void clear() {
-
-            }
-        });
+        DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
+                .cacheOnDisk(true)
+                .build();
+        ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context)
+                .defaultDisplayImageOptions(displayImageOptions);
         ImageLoader.getInstance().init(config.build());
     }
-
 }

@@ -15,12 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.textview.MaterialTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.rvapp.listadordefundos.R;
-import com.rvapp.listadordefundos.VideoAdapter;
+import com.rvapp.listadordefundos.ui.fundo.VideoAdapter;
 import com.rvapp.listadordefundos.entities.Fundo;
 import com.rvapp.listadordefundos.entities.fundo.subparts.PerformanceVideo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FundoActivity extends AppCompatActivity {
     private Fundo fundo;
@@ -83,11 +80,11 @@ public class FundoActivity extends AppCompatActivity {
         textFundRisk.setText(String.valueOf(fundo.getSpecification().getFundRiskProfile().getScoreRangeOrder()));
         setQualifiedTextAndIcon(textQualified, iconQualified);
         textFundClass.setText(fundo.getSpecification().getFundClass());
-        textMinimumApplication.setText(fundo.getOperability().getMinimumInitialApplicationAmount());
-        textMinimumSubApplication.setText(fundo.getOperability().getMinimumSubsequentApplicationAmount());
+        textMinimumApplication.setText("R$" + fundo.getOperability().getMinimumInitialApplicationAmount());
+        textMinimumSubApplication.setText("R$" + fundo.getOperability().getMinimumSubsequentApplicationAmount());
         textAdmFee.setText(fundo.getFees().getAdministrationFee());
         textPerformanceFee.setText(fundo.getFees().getPerformanceFee());
-        textMinimumPermanence.setText(fundo.getOperability().getMinimumBalancePermanence());
+        textMinimumPermanence.setText("R$" + fundo.getOperability().getMinimumBalancePermanence());
         textRetrievalLiquidation.setText(fundo.getOperability().getRetrievalLiquidationDaysStr());
         textTimeLimit.setText(fundo.getOperability().getRetrievalTimeLimit());
         textCNPJ.setText(fundo.getCnpj());
