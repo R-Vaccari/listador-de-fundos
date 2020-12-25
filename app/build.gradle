@@ -3,6 +3,15 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        config {
+            storeFile file('C:\\Users\\Rodrigo\\Documents\\Android\\Chaves\\assinatura_fundos.jks')
+            storePassword 'a1594826Bc'
+            keyAlias 'key-fundos'
+            keyPassword 'fundos'
+        }
+    }
+    testBuildType "release"
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -20,6 +29,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
     compileOptions {

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private FundoAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // TODO: filtros para fundos.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = findViewById(R.id.main_recyclerView);
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         configureRecycler(recyclerView);
 
         FundoViewModel viewModel = new FundoViewModel(getApplication());
-        viewModel.getFundos().observe(this, fundos -> {
+        viewModel.getFundos().observe(this, fundos -> {  // Recebe atualizações de cache e web.
             progressBar.hide();
             progressText.setVisibility(View.GONE);
             adapter.setListFundos(fundos);

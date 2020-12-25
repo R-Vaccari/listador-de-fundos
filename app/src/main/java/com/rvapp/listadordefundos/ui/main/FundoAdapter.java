@@ -67,11 +67,11 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
         else return 0;
     }
 
-    public Fundo getFromPosition(int position) {
+    public Fundo getFromPosition(int position) { // Retorna fundo do cartão para implementação do listener.
         return listFundos.get(position);
     }
 
-    public void colorLateralBar(Fundo fundo, ImageView lateralBar) {
+    public void colorLateralBar(Fundo fundo, ImageView lateralBar) {  // Colore cartão de acordo com perfil de investidor.
         switch (fundo.getSpecification().getFundSuitabilityProfile().getName()) {
             case "Conservador":
                 lateralBar.setBackgroundColor(context.getResources().getColor(R.color.suitability_conservador));

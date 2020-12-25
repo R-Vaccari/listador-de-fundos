@@ -32,17 +32,19 @@ public class FundoProvider {
     }
 
     public void loadCacheFile() {
-        try {
-            File json = new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json");
-            List<Fundo> fundos = objectMapper.readValue(json, new TypeReference<List<Fundo>>() {
-                @Override
-                public Type getType() {
-                    return super.getType();
-                }
-            });
-            viewModel.postToLiveData(fundos);
-        } catch (IOException e) {
-            Toast.makeText(viewModel.getApplication(), "Houve um erro durante a recuperação do cache!", Toast.LENGTH_LONG).show();
+        if (new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json").exists()) {
+            try {
+                File json = new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json");
+                List<Fundo> fundos = objectMapper.readValue(json, new TypeReference<List<Fundo>>() {
+                    @Override
+                    public Type getType() {
+                        return super.getType();
+                    }
+                });
+                viewModel.postToLiveData(fundos);
+            } catch (IOException e) {
+                Toast.makeText(viewModel.getApplication(), "Houve um erro durante a recuperação do cache!", Toast.LENGTH_LONG).show();
+            }
         }
     }
 

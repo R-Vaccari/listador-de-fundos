@@ -33,7 +33,7 @@ public class FundoProviderTest {
 
     @Test
     public void assertListSize() {
-        assertEquals(523, fundos.size());
+        assertEquals(524, fundos.size());
     }
 
     @Test

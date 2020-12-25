@@ -24,6 +24,8 @@ public class App extends Application {
     public void initImageLoader(Context context) {
         DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisk(true)
+                .showImageOnFail(R.drawable.ic_launcher_foreground)
+                .showImageForEmptyUri(R.drawable.ic_launcher_foreground)
                 .build();
         ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context)
                 .defaultDisplayImageOptions(displayImageOptions);

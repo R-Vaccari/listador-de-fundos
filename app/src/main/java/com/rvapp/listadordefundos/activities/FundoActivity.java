@@ -31,7 +31,7 @@ public class FundoActivity extends AppCompatActivity {
         configureRecycler(recyclerView);
     }
 
-    private void configureRecycler(RecyclerView recyclerView) {
+    private void configureRecycler(RecyclerView recyclerView) { // Recycler para vídeos de performance.
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -70,7 +70,8 @@ public class FundoActivity extends AppCompatActivity {
         ImageView strategyVideoThumbnail = findViewById(R.id.fundo_profile_strategy_video_thumbnail);
 
         Intent intent = getIntent();
-        fundo = intent.getExtras().getParcelable("fundo");
+        fundo = intent.getExtras().getParcelable("fundo"); // Recebe Fundo da MainActivity.
+
         textFullName.setText(fundo.getFullName());
         textDayProfit.setText(fundo.getProfitabilities().getDay().substring(0, 6) + "%");
         textMonthProfit.setText(fundo.getProfitabilities().getMonth().substring(0, 6) + "%");
@@ -105,7 +106,7 @@ public class FundoActivity extends AppCompatActivity {
         }
     }
 
-    private void setStrategyVideo(MaterialTextView textStrategyVideoTitle, ImageView strategyVideoThumbnail) {
+    private void setStrategyVideo(MaterialTextView textStrategyVideoTitle, ImageView strategyVideoThumbnail) { // Vídeo de estratégia, separado dos de performance.
         textStrategyVideoTitle.setText(fundo.getStrategyVideo().getTitle());
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(fundo.getStrategyVideo().getThumbnail(), strategyVideoThumbnail);
