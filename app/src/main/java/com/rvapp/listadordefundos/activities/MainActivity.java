@@ -9,6 +9,8 @@ import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.textview.MaterialTextView;
 import com.rvapp.listadordefundos.ui.main.FundoAdapter;
 import com.rvapp.listadordefundos.viewmodel.FundoViewModel;
@@ -16,6 +18,7 @@ import com.rvapp.listadordefundos.R;
 
 public class MainActivity extends AppCompatActivity {
     private FundoAdapter adapter;
+    private FundoViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { // TODO: filtros para fundos.
@@ -24,15 +27,23 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.main_recyclerView);
         ContentLoadingProgressBar progressBar = findViewById(R.id.main_progressBar);
         MaterialTextView progressText = findViewById(R.id.main_progressText);
+        ChipGroup chipGroup = findViewById(R.id.main_chipgroup);
+        chipGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (group.getCheckedChipId() != View.NO_ID) {
+                Chip chip = findViewById(group.getCheckedChipId());
+                viewModel.loadByCategory(chip.getText().toString());
+            } else viewModel.loadCache();
+        });
         configureRecycler(recyclerView);
 
-        FundoViewModel viewModel = new FundoViewModel(getApplication());
+        viewModel = new FundoViewModel(getApplication());
         viewModel.getFundos().observe(this, fundos -> {  // Recebe atualizações de cache e web.
             progressBar.hide();
             progressText.setVisibility(View.GONE);
             adapter.setListFundos(fundos);
             adapter.notifyDataSetChanged();
         });
+
     }
 
     private void configureRecycler(RecyclerView recyclerView) {

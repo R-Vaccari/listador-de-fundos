@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -11,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.rvapp.listadordefundos.R;
-import com.rvapp.listadordefundos.entities.Fundo;
+import com.rvapp.listadordefundos.model.entities.Fundo;
 
 import java.util.List;
 
-public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo> {
+public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo> implements Filterable {
     private List<Fundo> listFundos;
     private final Context context;
     private OnItemClickListener clickListener;
@@ -34,6 +36,11 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
 
     public void setClickListener(OnItemClickListener clickListener) {
         this.clickListener = clickListener;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
     }
 
     @NonNull

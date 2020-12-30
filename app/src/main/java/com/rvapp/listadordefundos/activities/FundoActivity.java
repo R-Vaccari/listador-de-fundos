@@ -16,8 +16,8 @@ import com.google.android.material.textview.MaterialTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.rvapp.listadordefundos.R;
 import com.rvapp.listadordefundos.ui.fundo.VideoAdapter;
-import com.rvapp.listadordefundos.entities.Fundo;
-import com.rvapp.listadordefundos.entities.fundo.subparts.PerformanceVideo;
+import com.rvapp.listadordefundos.model.entities.Fundo;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.PerformanceVideo;
 
 public class FundoActivity extends AppCompatActivity {
     private Fundo fundo;

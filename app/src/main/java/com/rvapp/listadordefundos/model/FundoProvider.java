@@ -4,16 +4,20 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rvapp.listadordefundos.FundCategoryNotFoundException;
+import com.rvapp.listadordefundos.model.entities.Fundo;
 import com.rvapp.listadordefundos.viewmodel.FundoViewModel;
-import com.rvapp.listadordefundos.entities.Fundo;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FundoProvider {
@@ -42,6 +46,29 @@ public class FundoProvider {
                     }
                 });
                 viewModel.postToLiveData(fundos);
+            } catch (IOException e) {
+                Toast.makeText(viewModel.getApplication(), "Houve um erro durante a recuperação do cache!", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
+    public void loadCacheByCategory(@NonNull String category) {
+        if (new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json").exists()) {
+            try {
+                File json = new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json");
+                List<Fundo> fundos = objectMapper.readValue(json, new TypeReference<List<Fundo>>() {
+                    @Override
+                    public Type getType() {
+                        return super.getType();
+                    }
+                });
+                List<Fundo> filtrados = new ArrayList<>();
+                for (Fundo fundo : fundos) {
+                    if (fundo.getSpecification().getFundType().equals(category)) filtrados.add(fundo);
+                }
+                if (filtrados.size() != 0) viewModel.postToLiveData(filtrados);
+                else throw new FundCategoryNotFoundException("Lista vazia: categoria inexistente.");
             } catch (IOException e) {
                 Toast.makeText(viewModel.getApplication(), "Houve um erro durante a recuperação do cache!", Toast.LENGTH_LONG).show();
             }

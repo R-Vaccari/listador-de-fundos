@@ -1,13 +1,13 @@
-package com.rvapp.listadordefundos.entities.fundo.subparts;
+package com.rvapp.listadordefundos.model.entities.fundo.subparts;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.rvapp.listadordefundos.entities.fundo.subparts.especification.subparts.FundMacroStrategy;
-import com.rvapp.listadordefundos.entities.fundo.subparts.especification.subparts.FundMainStrategy;
-import com.rvapp.listadordefundos.entities.fundo.subparts.especification.subparts.FundRiskProfile;
-import com.rvapp.listadordefundos.entities.fundo.subparts.especification.subparts.FundSuitabilityProfile;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.especification.subparts.FundMacroStrategy;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.especification.subparts.FundMainStrategy;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.especification.subparts.FundRiskProfile;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.especification.subparts.FundSuitabilityProfile;
 
 public class Specification implements Parcelable {
     @JsonProperty("fund_suitability_profile") private FundSuitabilityProfile fundSuitabilityProfile;

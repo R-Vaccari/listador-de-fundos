@@ -1,4 +1,4 @@
-package com.rvapp.listadordefundos.entities.fundo.subparts;
+package com.rvapp.listadordefundos.model.entities.fundo.subparts;
 
 import android.os.Parcel;
 import android.os.Parcelable;

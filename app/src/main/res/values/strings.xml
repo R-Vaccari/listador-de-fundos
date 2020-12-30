@@ -36,4 +36,10 @@
     <string name="tipo_investidor">Tipo de investidor: </string>
     <string name="investidor_qualificado">Investidor qualificado: </string>
     <string name="nivel_risco">Nível de risco: </string>
+    <string name="renda_fixa">Renda Fixa</string>
+    <string name="multimercado">Multimercado</string>
+    <string name="acoes">Ações</string>
+    <string name="cambial">Cambial</string>
+    <string name="referenciado">Referenciado</string>
+    <string name="creditorio">Direito Creditório</string>
 </resources>

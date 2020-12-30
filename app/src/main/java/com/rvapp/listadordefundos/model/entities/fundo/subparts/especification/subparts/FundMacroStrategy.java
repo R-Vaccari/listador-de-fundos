@@ -1,22 +1,20 @@
-package com.rvapp.listadordefundos.entities.fundo.subparts.especification.subparts;
+package com.rvapp.listadordefundos.model.entities.fundo.subparts.especification.subparts;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class FundMainStrategy implements Parcelable {
+public class FundMacroStrategy implements Parcelable {
     @JsonProperty("explanation") private String explanation;
-    @JsonProperty("fund_macro_strategy") private int fundMacroStrategy;
     @JsonProperty("id") private int id;
     @JsonProperty("name") private String name;
 
-    public FundMainStrategy() {
+    public FundMacroStrategy() {
     }
 
-    protected FundMainStrategy(Parcel in) {
+    protected FundMacroStrategy(Parcel in) {
         explanation = in.readString();
-        fundMacroStrategy = in.readInt();
         id = in.readInt();
         name = in.readString();
     }
@@ -24,7 +22,6 @@ public class FundMainStrategy implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(explanation);
-        dest.writeInt(fundMacroStrategy);
         dest.writeInt(id);
         dest.writeString(name);
     }
@@ -34,15 +31,15 @@ public class FundMainStrategy implements Parcelable {
         return 0;
     }
 
-    public static final Creator<FundMainStrategy> CREATOR = new Creator<FundMainStrategy>() {
+    public static final Creator<FundMacroStrategy> CREATOR = new Creator<FundMacroStrategy>() {
         @Override
-        public FundMainStrategy createFromParcel(Parcel in) {
-            return new FundMainStrategy(in);
+        public FundMacroStrategy createFromParcel(Parcel in) {
+            return new FundMacroStrategy(in);
         }
 
         @Override
-        public FundMainStrategy[] newArray(int size) {
-            return new FundMainStrategy[size];
+        public FundMacroStrategy[] newArray(int size) {
+            return new FundMacroStrategy[size];
         }
     };
 
@@ -53,15 +50,6 @@ public class FundMainStrategy implements Parcelable {
 
     public void setExplanation(String explanation) {
         this.explanation = explanation;
-    }
-
-    public int getFundMacroStrategy() {
-        return fundMacroStrategy;
-    }
-
-
-    public void setFundMacroStrategy(int fundMacroStrategy) {
-        this.fundMacroStrategy = fundMacroStrategy;
     }
 
     public int getId() {

@@ -1,23 +1,33 @@
 package com.rvapp.listadordefundos.activities;
 
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.espresso.intent.Intents;
+import androidx.test.espresso.intent.matcher.IntentMatchers;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.MediumTest;
+import androidx.test.filters.LargeTest;
 
 import com.rvapp.listadordefundos.R;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-@MediumTest
-public class MainActivityTest { // TODO: Não funcionam sem cache, pois os testes rodam antes dos dados serem carregados.
+@LargeTest
+public class MainActivityTest { // TODO: Espresso não espera o carregamento dos dados.
     @Rule public ActivityScenarioRule<MainActivity> scenarioRule = new ActivityScenarioRule<>(MainActivity.class);
+
+    @Before
+    public void setIntents() {
+        Intents.init();
+    }
 
     @Test
     public void checkIfCardIsDisplayed() {
@@ -37,12 +47,14 @@ public class MainActivityTest { // TODO: Não funcionam sem cache, pois os teste
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
-    /*@Test
-    public void checkIntentContents() throws InterruptedException {
-        Intents.init();
+    @Test
+    public void checkIntentContents() {
         Espresso.onView(ViewMatchers.withId(R.id.main_recyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition(19, ViewActions.click()));
-        Intents.intended(IntentMatchers.toPackage("com.rvapp.listadordefundos.activities"));
+        Intents.intended(IntentMatchers.hasExtraWithKey("fundo"));
+    }
+
+    @After
+    public void releaseIntents() {
         Intents.release();
     }
-     */
 }

@@ -1,21 +1,21 @@
-package com.rvapp.listadordefundos.entities;
+package com.rvapp.listadordefundos.model.entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.rvapp.listadordefundos.entities.fundo.subparts.Benchmark;
-import com.rvapp.listadordefundos.entities.fundo.subparts.Description;
-import com.rvapp.listadordefundos.entities.fundo.subparts.Document;
-import com.rvapp.listadordefundos.entities.fundo.subparts.Fees;
-import com.rvapp.listadordefundos.entities.fundo.subparts.FundManager;
-import com.rvapp.listadordefundos.entities.fundo.subparts.FundSituation;
-import com.rvapp.listadordefundos.entities.fundo.subparts.Operability;
-import com.rvapp.listadordefundos.entities.fundo.subparts.PerformanceAudio;
-import com.rvapp.listadordefundos.entities.fundo.subparts.PerformanceVideo;
-import com.rvapp.listadordefundos.entities.fundo.subparts.Profitabilities;
-import com.rvapp.listadordefundos.entities.fundo.subparts.Specification;
-import com.rvapp.listadordefundos.entities.fundo.subparts.StrategyVideo;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.Benchmark;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.Description;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.Document;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.Fees;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.FundManager;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.FundSituation;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.Operability;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.PerformanceAudio;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.PerformanceVideo;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.Profitabilities;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.Specification;
+import com.rvapp.listadordefundos.model.entities.fundo.subparts.StrategyVideo;
 
 public class Fundo implements Parcelable {
     @JsonProperty("id") private int id;
