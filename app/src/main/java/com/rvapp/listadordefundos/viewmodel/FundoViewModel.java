@@ -29,23 +29,24 @@ public class FundoViewModel extends AndroidViewModel {
     }
 
     public void loadCache() {
-        provider.loadCacheFile();
-    }
+        provider.loadCacheFile(null);
+    } // Invocado pela Main.
 
     public MutableLiveData<List<Fundo>> getFundos() {
         if (fundosMutableLiveData.getValue() == null) loadData();
         return fundosMutableLiveData;
     }
 
-    public void loadByCategory(String category) {
-        provider.loadCacheByCategory(category);
+    public void loadByCategory(String category) { // Chips na Toolbar.
+        provider.loadCacheFile(category);
     }
 
     public void postToLiveData(List<Fundo> fundos) {
         fundosMutableLiveData.setValue(fundos);
     }
 
-    public Application getApplication() {
+    @NonNull
+    public Application getApplication() { // Usado pelo Provider para acessar arquivos.
         return application;
     }
 }

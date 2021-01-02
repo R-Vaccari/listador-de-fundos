@@ -12,6 +12,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textview.MaterialTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.rvapp.listadordefundos.R;
@@ -48,6 +49,7 @@ public class FundoActivity extends AppCompatActivity {
 
     private void setMainViews() {
         MaterialTextView textFullName = findViewById(R.id.fundo_fullName);
+        TextInputLayout inputLayout = findViewById(R.id.fundo_input_layout);
         MaterialTextView textDayProfit = findViewById(R.id.fundo_profitability_day_value);
         MaterialTextView textMonthProfit = findViewById(R.id.fundo_profitability_month_value);
         MaterialTextView text12mProfit = findViewById(R.id.fundo_profitability_12m_value);
@@ -73,6 +75,7 @@ public class FundoActivity extends AppCompatActivity {
         fundo = intent.getExtras().getParcelable("fundo"); // Recebe Fundo da MainActivity.
 
         textFullName.setText(fundo.getFullName());
+        inputLayout.setPrefixText("R$");
         textDayProfit.setText(fundo.getProfitabilities().getDay().substring(0, 6) + "%");
         textMonthProfit.setText(fundo.getProfitabilities().getMonth().substring(0, 6) + "%");
         text12mProfit.setText(fundo.getProfitabilities().getM12().substring(0, 6) + "%");

@@ -4,11 +4,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rvapp.listadordefundos.FundCategoryNotFoundException;
 import com.rvapp.listadordefundos.model.entities.Fundo;
 import com.rvapp.listadordefundos.viewmodel.FundoViewModel;
 
@@ -35,42 +34,46 @@ public class FundoProvider {
         networkThread.start();
     }
 
-    public void loadCacheFile() {
-        if (new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json").exists()) {
-            try {
-                File json = new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json");
-                List<Fundo> fundos = objectMapper.readValue(json, new TypeReference<List<Fundo>>() {
-                    @Override
-                    public Type getType() {
-                        return super.getType();
-                    }
-                });
-                viewModel.postToLiveData(fundos);
-            } catch (IOException e) {
-                Toast.makeText(viewModel.getApplication(), "Houve um erro durante a recuperação do cache!", Toast.LENGTH_LONG).show();
-            }
-        }
+    public void loadCacheFile(@Nullable String category) {
+        CacheRunnable runnable = new CacheRunnable(viewModel, objectMapper, category);
+        Thread cacheThread = new Thread(runnable);
+        cacheThread.start();
     }
 
+    static class CacheRunnable implements Runnable {
+        private final Handler mainHandler = new Handler(Looper.getMainLooper());
+        private final WeakReference<FundoViewModel> fundoViewModelWeakReference;
+        private final WeakReference<ObjectMapper> objectMapperWeakReference;
+        private final String category;
 
-    public void loadCacheByCategory(@NonNull String category) {
-        if (new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json").exists()) {
-            try {
-                File json = new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json");
-                List<Fundo> fundos = objectMapper.readValue(json, new TypeReference<List<Fundo>>() {
-                    @Override
-                    public Type getType() {
-                        return super.getType();
-                    }
-                });
-                List<Fundo> filtrados = new ArrayList<>();
-                for (Fundo fundo : fundos) {
-                    if (fundo.getSpecification().getFundType().equals(category)) filtrados.add(fundo);
+        public CacheRunnable(FundoViewModel viewModel, ObjectMapper objectMapper, String category) {
+            fundoViewModelWeakReference = new WeakReference<>(viewModel);
+            objectMapperWeakReference = new WeakReference<>(objectMapper);
+            this.category = category;
+        }
+
+        @Override
+        public void run() {
+            FundoViewModel viewModel = fundoViewModelWeakReference.get();
+            ObjectMapper objectMapper = objectMapperWeakReference.get();
+            if (new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json").exists()) {
+                try {
+                    File json = new File(viewModel.getApplication().getFilesDir().getAbsolutePath() + "/fundos.json");
+                    List<Fundo> fundos = objectMapper.readValue(json, new TypeReference<List<Fundo>>() {
+                        @Override
+                        public Type getType() { return super.getType(); }
+                    });
+
+                    if (category != null) {
+                        List<Fundo> filtrados = new ArrayList<>();
+                        for (Fundo fundo : fundos) {
+                            if (fundo.getSpecification().getFundType().equals(category)) filtrados.add(fundo);
+                        }
+                        if (filtrados.size() != 0) mainHandler.post(() -> viewModel.postToLiveData(filtrados));
+                    } else mainHandler.post(() -> viewModel.postToLiveData(fundos));
+                } catch (IOException e) {
+                    mainHandler.post(() -> Toast.makeText(viewModel.getApplication(), "Houve um erro durante a recuperação do cache!", Toast.LENGTH_LONG).show());
                 }
-                if (filtrados.size() != 0) viewModel.postToLiveData(filtrados);
-                else throw new FundCategoryNotFoundException("Lista vazia: categoria inexistente.");
-            } catch (IOException e) {
-                Toast.makeText(viewModel.getApplication(), "Houve um erro durante a recuperação do cache!", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -90,7 +93,6 @@ public class FundoProvider {
             FundoViewModel viewModel = fundoViewModelWeakReference.get();
             ObjectMapper objectMapper = objectMapperWeakReference.get();
             try {
-                mainHandler.post(() -> Toast.makeText(viewModel.getApplication(), "Sincronizando...", Toast.LENGTH_LONG).show());
                 List<Fundo> fundos = objectMapper.readValue(new URL("https://s3.amazonaws.com/orama-media/json/fund_detail_full.json?serializ%20er=fund_detail_full"), new TypeReference<List<Fundo>>() {
                     @Override
                     public Type getType() {

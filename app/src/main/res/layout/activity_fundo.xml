@@ -10,576 +10,619 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
-        <View
-            android:id="@+id/middle"
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_fullName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            style="@style/Titles"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profitability_subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/rentabilidade"
-            style="@style/Subtitles"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fundo_fullName" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profitability_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/dia"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profitability_day_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            style="@style/ProfitDetails"
-            app:layout_constraintEnd_toEndOf="@id/fundo_profitability_day"
-            app:layout_constraintStart_toStartOf="@id/fundo_profitability_day"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profitability_day" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profitability_month"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/mes"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/fundo_profitability_day"
-            app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profitability_month_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            style="@style/ProfitDetails"
-            app:layout_constraintEnd_toEndOf="@id/fundo_profitability_month"
-            app:layout_constraintStart_toStartOf="@id/fundo_profitability_month"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profitability_month" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profitability_12m"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/doze_meses"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/fundo_profitability_month"
-            app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profitability_12m_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            style="@style/ProfitDetails"
-            app:layout_constraintEnd_toEndOf="@id/fundo_profitability_12m"
-            app:layout_constraintStart_toStartOf="@id/fundo_profitability_12m"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profitability_12m" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profitability_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/ano"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/fundo_profitability_12m"
-            app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profitability_year_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            style="@style/ProfitDetails"
-            app:layout_constraintEnd_toEndOf="@id/fundo_profitability_year"
-            app:layout_constraintStart_toStartOf="@id/fundo_profitability_year"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profitability_year" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="250dp"
-            android:layout_height="1dp"
-            android:layout_marginBottom="16dp"
-            android:background="?android:attr/dividerVertical"
-            app:layout_constraintBottom_toTopOf="@+id/fundo_profile_subtitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profile_subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="96dp"
-            android:text="@string/perfil"
-            style="@style/Subtitles"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profitability_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_investor_type"
-            android:text="@string/tipo_investidor"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_investor_type_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_risk"
-            android:text="@string/nivel_risco"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_investor_type" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_risk_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_investor_type" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_qualified"
-            android:text="@string/investidor_qualificado"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_risk" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_qualified_value"
-            app:layout_constraintEnd_toStartOf="@id/fundo_profile_fund_qualified_icon"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_risk" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_qualified_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_risk" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_class"
-            android:text="@string/tipo_fundo"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_qualified" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profile_fund_class_value"
-            style="@style/ActivityContents"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:textAlignment="textEnd"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@id/middle"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_qualified" />
-
-        <View
-            android:layout_width="250dp"
-            android:layout_height="1dp"
-            android:layout_marginBottom="16dp"
-            android:background="?android:attr/dividerVertical"
-            app:layout_constraintBottom_toTopOf="@+id/fundo_characteristics_subtitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_characteristics_subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/caracteristicas"
-            style="@style/Subtitles"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_class_value" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_minimum_application"
-            android:text="@string/card_minimum_application"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_characteristics_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_minimum_application_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_characteristics_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_minimum_sub_application"
-            android:text="@string/movimentacao_minima"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_application" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_minimum_sub_application_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_application" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_adm_fee"
-            android:text="@string/taxa_adm"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_sub_application" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_adm_fee_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_sub_application" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_performance_fee"
-            android:text="@string/taxa_performance"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_adm_fee" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_performance_fee_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_adm_fee" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_minimum_permanence"
-            android:text="@string/permanencia_minima"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_performance_fee" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_minimum_permanence_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_performance_fee" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_liquidation_retrieval"
-            android:text="@string/liquidez_resgate"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_permanence" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profile_fund_liquidation_retrieval_value"
-            style="@style/ActivityContents"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:textAlignment="textEnd"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/middle"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_permanence" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_time_limit"
-            android:text="@string/horario_limite"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_liquidation_retrieval_value" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_time_limit_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_liquidation_retrieval_value" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_fund_cnpj"
-            android:text="@string/cnpj"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_time_limit" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_fund_cnpj_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_time_limit" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_manager_fullname"
-            android:text="@string/administradora"
-            style="@style/ActivityContents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_cnpj" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/ActivityContents"
-            android:id="@+id/fundo_profile_manager_fullname_value"
-            android:textAlignment="textEnd"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/middle"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_cnpj" />
-
-        <View
-            android:layout_width="250dp"
-            android:layout_height="1dp"
-            android:layout_marginBottom="16dp"
-            android:background="?android:attr/dividerVertical"
-            app:layout_constraintBottom_toTopOf="@id/fundo_profile_media_subtitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profile_media_subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/midia"
-            style="@style/Subtitles"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_manager_fullname_value" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/ic_baseline_video_library_24"
-            app:layout_constraintStart_toEndOf="@+id/fundo_profile_media_subtitle"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_manager_fullname_value" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profile_media_performance_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/performance"
-            style="@style/MediaHeaders"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_subtitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profile_media_performance_unavailable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/nao_ha_videos_disponiveis"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_performance_header" />
-
+        android:paddingBottom="8dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/fundo_profile_videos_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_performance_header" >
+            android:layout_height="match_parent"
+            android:layout_margin="8dp">
+            <View
+                android:id="@+id/middle"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_fullName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/fundo_profile_videos_recycler"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                style="@style/Titles"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profile_media_strategy_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/estrategia"
-            style="@style/MediaHeaders"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_videos_layout" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fundo_profile_media_strategy_unavailable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/nao_ha_videos_disponiveis"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_strategy_header" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="200dp"
-            android:layout_height="125dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_strategy_header">
-            <ImageView
-                android:id="@+id/fundo_profile_strategy_video_thumbnail"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
+            <View
+                android:id="@+id/fundo_divider_invest"
+                android:layout_width="250dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="?android:attr/dividerVertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/thumbnail_descricao" />
+                app:layout_constraintTop_toBottomOf="@+id/fundo_fullName" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_invest"
+                style="@style/Subtitles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/investir"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fundo_divider_invest" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/fundo_input_layout"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_invest" >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fundo_input"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textColor="@color/green_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profitability_subtitle"
+                style="@style/Subtitles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/rentabilidade"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fundo_input_layout" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profitability_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/dia"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profitability_subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profitability_day_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/ProfitDetails"
+                app:layout_constraintEnd_toEndOf="@id/fundo_profitability_day"
+                app:layout_constraintStart_toStartOf="@id/fundo_profitability_day"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profitability_day" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profitability_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/mes"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/fundo_profitability_day"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profitability_subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profitability_month_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/ProfitDetails"
+                app:layout_constraintEnd_toEndOf="@id/fundo_profitability_month"
+                app:layout_constraintStart_toStartOf="@id/fundo_profitability_month"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profitability_month" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profitability_12m"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/doze_meses"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/fundo_profitability_month"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profitability_subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profitability_12m_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/ProfitDetails"
+                app:layout_constraintEnd_toEndOf="@id/fundo_profitability_12m"
+                app:layout_constraintStart_toStartOf="@id/fundo_profitability_12m"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profitability_12m" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profitability_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/ano"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/fundo_profitability_12m"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profitability_subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profitability_year_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/ProfitDetails"
+                app:layout_constraintEnd_toEndOf="@id/fundo_profitability_year"
+                app:layout_constraintStart_toStartOf="@id/fundo_profitability_year"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profitability_year" />
+
+            <View
+                android:id="@+id/fundo_divider_profile"
+                android:layout_width="250dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="?android:attr/dividerVertical"
+                app:layout_constraintBottom_toTopOf="@+id/fundo_profile_subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fundo_profitability_12m_value" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profile_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/perfil"
+                style="@style/Subtitles"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_divider_profile" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_investor_type"
+                android:text="@string/tipo_investidor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_investor_type_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_risk"
+                android:text="@string/nivel_risco"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_investor_type" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_risk_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_investor_type" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_qualified"
+                android:text="@string/investidor_qualificado"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_risk" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_qualified_value"
+                app:layout_constraintEnd_toStartOf="@id/fundo_profile_fund_qualified_icon"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_risk" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_qualified_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_risk" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_class"
+                android:text="@string/tipo_fundo"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_qualified" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profile_fund_class_value"
+                style="@style/ActivityContents"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:textAlignment="textEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@id/middle"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_qualified" />
+
+            <View
+                android:id="@+id/fundo_divider_characteristics"
+                android:layout_width="250dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="?android:attr/dividerVertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fundo_profile_fund_class_value" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_characteristics_subtitle"
+                style="@style/Subtitles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/caracteristicas"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fundo_divider_characteristics" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_minimum_application"
+                android:text="@string/card_minimum_application"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_characteristics_subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_minimum_application_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_characteristics_subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_minimum_sub_application"
+                android:text="@string/movimentacao_minima"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_application" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_minimum_sub_application_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_application" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_adm_fee"
+                android:text="@string/taxa_adm"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_sub_application" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_adm_fee_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_sub_application" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_performance_fee"
+                android:text="@string/taxa_performance"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_adm_fee" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_performance_fee_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_adm_fee" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_minimum_permanence"
+                android:text="@string/permanencia_minima"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_performance_fee" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_minimum_permanence_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_performance_fee" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_liquidation_retrieval"
+                android:text="@string/liquidez_resgate"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_permanence" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profile_fund_liquidation_retrieval_value"
+                style="@style/ActivityContents"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:textAlignment="textEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/middle"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_minimum_permanence" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_time_limit"
+                android:text="@string/horario_limite"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_liquidation_retrieval_value" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_time_limit_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_liquidation_retrieval_value" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_fund_cnpj"
+                android:text="@string/cnpj"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_time_limit" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_fund_cnpj_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_time_limit" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/fundo_profile_manager_fullname"
+                android:text="@string/administradora"
+                style="@style/ActivityContents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_cnpj" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:id="@+id/fundo_profile_strategy_video_title"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/ActivityContents"
+                android:id="@+id/fundo_profile_manager_fullname_value"
+                android:textAlignment="textEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/middle"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_fund_cnpj" />
+
+            <View
+                android:id="@+id/fundo_divider_media"
+                android:layout_width="250dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="?android:attr/dividerVertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fundo_profile_manager_fullname_value" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profile_media_subtitle"
+                style="@style/Subtitles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/midia"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fundo_divider_media" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/ic_baseline_video_library_24"
+                app:layout_constraintStart_toEndOf="@+id/fundo_profile_media_subtitle"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_manager_fullname_value" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profile_media_performance_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/performance"
+                style="@style/MediaHeaders"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_subtitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profile_media_performance_unavailable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/nao_ha_videos_disponiveis"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_performance_header" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
                 android:layout_marginTop="8dp"
-                android:textAlignment="center"
+                android:id="@+id/fundo_profile_videos_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_performance_header" >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/fundo_profile_videos_recycler"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profile_media_strategy_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/estrategia"
+                style="@style/MediaHeaders"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_videos_layout" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fundo_profile_media_strategy_unavailable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/nao_ha_videos_disponiveis"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_strategy_header" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="200dp"
+                android:layout_height="125dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fundo_profile_strategy_video_thumbnail" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_strategy_header">
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fundo_profile_media_strategy_unavailable"/>
+                <ImageView
+                    android:id="@+id/fundo_profile_strategy_video_thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:contentDescription="@string/thumbnail_descricao"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fundo_profile_strategy_video_title"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fundo_profile_strategy_video_thumbnail" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
