@@ -47,9 +47,9 @@
     <string name="creditorio">Direito Creditório</string>
     <string-array name="aportes" >
         <item>Todos</item>
-        <item>R$1.000</item>
-        <item>R$5.000</item>
-        <item>R$10.000</item>
+        <item>Até R$1.000</item>
+        <item>Até R$5.000</item>
+        <item>Até R$10.000</item>
     </string-array>
     <string-array name="perfis" >
         <item>Todos</item>

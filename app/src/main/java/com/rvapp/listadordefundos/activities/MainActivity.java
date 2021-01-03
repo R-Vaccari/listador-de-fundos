@@ -77,9 +77,17 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         });
 
-
         MaterialAutoCompleteTextView profileAutoComplete = findViewById(R.id.main_filter_profile_value);
         ArrayAdapter<CharSequence> perfisAdapter = ArrayAdapter.createFromResource(this, R.array.perfis, R.layout.support_simple_spinner_dropdown_item);
         profileAutoComplete.setAdapter(perfisAdapter);
+        profileAutoComplete.setOnItemClickListener((parent, view, position, id) -> {
+            FundoFilter filter = adapter.getFilter();
+            if (position == 0) filter.setProfileFilterEnabled(false);
+            else {
+                filter.setProfileFilterEnabled(true);
+                filter.setProfileFilter(profileAutoComplete.getText().toString());
+            }
+            adapter.notifyDataSetChanged();
+        });
     }
 }

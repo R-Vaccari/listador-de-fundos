@@ -13,7 +13,6 @@ import com.google.android.material.textview.MaterialTextView;
 import com.rvapp.listadordefundos.R;
 import com.rvapp.listadordefundos.model.entities.Fundo;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo> {
@@ -102,10 +101,12 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
 
     private boolean checkFund(Fundo fundo) {
         if (filter.isApplicationFilterEnabled()) {
-            if (Double.parseDouble(fundo.getOperability().getMinimumInitialApplicationAmount()) < Double.parseDouble(filter.getApplicationFilter().substring(2))) return false;
+            double application = Double.parseDouble(fundo.getOperability().getMinimumInitialApplicationAmount());
+            double applicatioFilter = Double.parseDouble(filter.getApplicationFilter().substring(6));
+            if (applicatioFilter < application) return false;
         }
         if (filter.isProfileFilterEnabled()) {
-            if (!filter.getProfileFilter().equals(fundo.getSpecification().getFundSuitabilityProfile())) return false;
+            if (!filter.getProfileFilter().equals(fundo.getSpecification().getFundSuitabilityProfile().getName())) return false;
         }
         return true;
     }
