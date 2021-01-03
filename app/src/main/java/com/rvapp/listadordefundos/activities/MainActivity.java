@@ -3,6 +3,7 @@ package com.rvapp.listadordefundos.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.ContentLoadingProgressBar;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textview.MaterialTextView;
 import com.rvapp.listadordefundos.ui.main.FundoAdapter;
 import com.rvapp.listadordefundos.viewmodel.FundoViewModel;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private FundoViewModel viewModel;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { // TODO: filtros para fundos.
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = findViewById(R.id.main_recyclerView);
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             } else viewModel.loadCache();
         });
         configureRecycler(recyclerView);
+        configureInputs();
 
         viewModel = new FundoViewModel(getApplication());
         viewModel.getFundos().observe(this, fundos -> {  // Recebe atualizações de cache e web.
@@ -43,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             adapter.setListFundos(fundos);
             adapter.notifyDataSetChanged();
         });
-
     }
 
     private void configureRecycler(RecyclerView recyclerView) {
@@ -57,5 +59,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         recyclerView.setAdapter(adapter);
+    }
+
+    private void configureInputs() {
+        MaterialAutoCompleteTextView applicationAutoComplete = findViewById(R.id.main_filter_minimum_application_value);
+        ArrayAdapter<CharSequence> aportesAdapter = ArrayAdapter.createFromResource(this, R.array.aportes, R.layout.support_simple_spinner_dropdown_item);
+        applicationAutoComplete.setAdapter(aportesAdapter);
+
+        MaterialAutoCompleteTextView profileAutoComplete = findViewById(R.id.main_filter_profile_value);
+        ArrayAdapter<CharSequence> perfisAdapter = ArrayAdapter.createFromResource(this, R.array.perfis, R.layout.support_simple_spinner_dropdown_item);
+        profileAutoComplete.setAdapter(perfisAdapter);
     }
 }

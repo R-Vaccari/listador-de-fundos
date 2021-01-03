@@ -2,7 +2,9 @@
     <string name="app_name">Listador de Fundos</string>
     <string name="carregando_fundos">Carregando fundos. Por favor aguarde.</string>
     <string name="card_rentabilidade_12m">Rentabilidade: </string>
-    <string name="card_minimum_application">Aplicação mínima: </string>
+    <string name="card_aplicacao_minima">Aplicação mínima: </string>
+    <string name="input_aplicacao_minima">Aporte</string>
+    <string name="input_perfil">Perfil</string>
 
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
@@ -43,4 +45,16 @@
     <string name="cambial">Cambial</string>
     <string name="referenciado">Referenciado</string>
     <string name="creditorio">Direito Creditório</string>
+    <string-array name="aportes" >
+        <item>Todos</item>
+        <item>R$1.000</item>
+        <item>R$5.000</item>
+        <item>R$10.000</item>
+    </string-array>
+    <string-array name="perfis" >
+        <item>Todos</item>
+        <item>Conservador</item>
+        <item>Moderado</item>
+        <item>Arrojado</item>
+    </string-array>
 </resources>

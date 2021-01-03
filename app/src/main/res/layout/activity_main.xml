@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:minHeight="?attr/actionBarSize"
-        app:contentInsetStart="0dp"
-        app:contentInsetStartWithNavigation="0dp"
+        app:contentInsetStart="4dp"
+        app:contentInsetStartWithNavigation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,47 +23,48 @@
             <HorizontalScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end">
+                android:layout_gravity="end"
+                android:scrollbars="none">
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/main_chipgroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:singleSelection="true"
                     app:singleLine="true">
-
                     <com.google.android.material.chip.Chip
+                        style="@style/ChipStates"
                         android:id="@+id/main_chip_rendafixa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/renda_fixa"
                         android:checkable="true"
-                        android:textSize="12sp"/>
-
+                        android:textSize="12sp" />
                     <com.google.android.material.chip.Chip
+                        style="@style/ChipStates"
                         android:id="@+id/main_chip_multimercado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/multimercado"
                         android:checkable="true"
                         android:textSize="12sp"/>
-
                     <com.google.android.material.chip.Chip
+                        style="@style/ChipStates"
                         android:id="@+id/main_chip_acoes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/acoes"
                         android:checkable="true"
                         android:textSize="12sp"/>
-
                     <com.google.android.material.chip.Chip
+                        style="@style/ChipStates"
                         android:id="@+id/main_chip_cambial"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cambial"
                         android:checkable="true"
                         android:textSize="12sp"/>
-
                     <com.google.android.material.chip.Chip
+                        style="@style/ChipStates"
                         android:id="@+id/main_chip_creditorio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -72,6 +73,45 @@
                         android:textSize="12sp"/>
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:focusableInTouchMode="true">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:id="@+id/main_filter_minimum_application"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_aplicacao_minima"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/main_filter_minimum_application_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:id="@+id/main_filter_profile"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_perfil"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/main_filter_profile_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -105,5 +145,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_progressBar" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

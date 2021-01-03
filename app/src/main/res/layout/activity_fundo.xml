@@ -14,7 +14,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8dp">
+            android:layout_margin="8dp"
+            android:focusableInTouchMode="true">
             <View
                 android:id="@+id/middle"
                 android:layout_width="1dp"
@@ -71,7 +72,8 @@
                     android:backgroundTint="@android:color/transparent"
                     android:textColor="@color/green_medium"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textview.MaterialTextView
@@ -314,7 +316,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:id="@+id/fundo_profile_fund_minimum_application"
-                android:text="@string/card_minimum_application"
+                android:text="@string/card_aplicacao_minima"
                 style="@style/ActivityContents"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fundo_characteristics_subtitle" />
