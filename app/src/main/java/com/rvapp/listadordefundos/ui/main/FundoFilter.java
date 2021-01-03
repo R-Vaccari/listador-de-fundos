@@ -1,8 +1,8 @@
 package com.rvapp.listadordefundos.ui.main;
 
 public class FundoFilter {
-    private boolean applicationFilterEnabled;
-    private boolean profileFilterEnabled;
+    private boolean applicationFilterEnabled = false;
+    private boolean profileFilterEnabled = false;
     private String applicationFilter;
     private String profileFilter;
 

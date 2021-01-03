@@ -3,6 +3,7 @@ package com.rvapp.listadordefundos.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textview.MaterialTextView;
 import com.rvapp.listadordefundos.ui.main.FundoAdapter;
+import com.rvapp.listadordefundos.ui.main.FundoFilter;
 import com.rvapp.listadordefundos.viewmodel.FundoViewModel;
 import com.rvapp.listadordefundos.R;
 
@@ -65,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
         MaterialAutoCompleteTextView applicationAutoComplete = findViewById(R.id.main_filter_minimum_application_value);
         ArrayAdapter<CharSequence> aportesAdapter = ArrayAdapter.createFromResource(this, R.array.aportes, R.layout.support_simple_spinner_dropdown_item);
         applicationAutoComplete.setAdapter(aportesAdapter);
+        applicationAutoComplete.setOnItemClickListener((parent, view, position, id) -> {
+            FundoFilter filter = adapter.getFilter();
+            if (position == 0) filter.setApplicationFilterEnabled(false);
+            else {
+                filter.setApplicationFilterEnabled(true);
+                filter.setApplicationFilter(applicationAutoComplete.getText().toString().replace(".", ""));
+            }
+            adapter.notifyDataSetChanged();
+        });
+
 
         MaterialAutoCompleteTextView profileAutoComplete = findViewById(R.id.main_filter_profile_value);
         ArrayAdapter<CharSequence> perfisAdapter = ArrayAdapter.createFromResource(this, R.array.perfis, R.layout.support_simple_spinner_dropdown_item);

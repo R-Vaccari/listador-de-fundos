@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -15,15 +13,18 @@ import com.google.android.material.textview.MaterialTextView;
 import com.rvapp.listadordefundos.R;
 import com.rvapp.listadordefundos.model.entities.Fundo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo> implements Filterable {
-    private List<Fundo> listFundos;
+public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo> {
+    private final FundoFilter filter;
     private final Context context;
+    private List<Fundo> listFundos;
     private OnItemClickListener clickListener;
 
     public FundoAdapter(Context context) {
         this.context = context;
+        filter = new FundoFilter();
     }
 
     public void setListFundos(List<Fundo> listFundos) {
@@ -38,9 +39,8 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
         this.clickListener = clickListener;
     }
 
-    @Override
-    public Filter getFilter() {
-        return null;
+    public FundoFilter getFilter() {
+        return filter;
     }
 
     @NonNull
@@ -52,7 +52,15 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
 
     @Override
     public void onBindViewHolder(@NonNull HolderFundo holder, int position) {
-        Fundo fundo = listFundos.get(position);
+        final Fundo fundo = listFundos.get(position);
+        final ViewGroup.LayoutParams params = holder.itemView.getLayoutParams();
+        if (!checkFund(fundo)) {
+            holder.itemView.setVisibility(View.GONE);
+            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+        } else {
+            holder.itemView.setVisibility(View.VISIBLE);
+            holder.itemView.setLayoutParams(params);
+        }
         colorLateralBar(fundo, holder.lateralBar);
         holder.textSimpleName.setText(fundo.getSimpleName());
         holder.textFundType.setText(fundo.getSpecification().getFundType());
@@ -90,6 +98,16 @@ public class FundoAdapter extends RecyclerView.Adapter<FundoAdapter.HolderFundo>
                 lateralBar.setBackgroundColor(context.getResources().getColor(R.color.suitability_arrojado));
                 break;
         }
+    }
+
+    private boolean checkFund(Fundo fundo) {
+        if (filter.isApplicationFilterEnabled()) {
+            if (Double.parseDouble(fundo.getOperability().getMinimumInitialApplicationAmount()) < Double.parseDouble(filter.getApplicationFilter().substring(2))) return false;
+        }
+        if (filter.isProfileFilterEnabled()) {
+            if (!filter.getProfileFilter().equals(fundo.getSpecification().getFundSuitabilityProfile())) return false;
+        }
+        return true;
     }
 
     public static class HolderFundo extends RecyclerView.ViewHolder {
